@@ -63,15 +63,18 @@ namespace UnitTestProject1
             Assert.AreEqual(0,MYFunc(2,2));
         }
 
+        
         [TestMethod]
-        public void TestDelegate() {
+        public void TestDelegateFunc() {
             Func<int,int> Squared = x => x * x;
             Assert.AreEqual(4, Squared(2));
             Assert.AreEqual(9, Squared(3));
         }
+         
 
+        
         [TestMethod]
-        public void TestDelegate() {
+        public void TestDelegateFuncLambda() {
             Multiply MYFunc = (x, y) => x * y;//lamda function
             Assert.AreEqual(4, MYFunc(2, 2));
             MYFunc = (x, y) => x - y;
@@ -79,8 +82,9 @@ namespace UnitTestProject1
             MYFunc = delegate(int x, int y){//delegate function
                 return x - y;
             };
-             * */
+            */ 
             Assert.AreEqual(0, MYFunc(2, 2));
         }
+        
     }
 }
