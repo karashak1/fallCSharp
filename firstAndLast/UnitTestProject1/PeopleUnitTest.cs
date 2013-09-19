@@ -59,5 +59,23 @@ namespace UnitTestProject1 {
             var peopleNameLength = people.Select(x => x.Name.Length).ToArray();
             Assert.AreEqual(names.Count(), peopleNameLength.Count());
         }
+
+        [TestMethod]
+        public void PeopleOrderSmallName() {
+            var names = new[] {"Bessie", "Vashti", "Frederica", "Nisha", "Kendall", "Magdalena", "Brendon"
+            , "Eve", "Manda", "Elvera", "Miquel", "Tyra", "Lucie", "Marvella", "Tracee", "Ramiro", "Irene", "Davina", "Jeromy" , "Siu"};
+            var people = from x in names
+                         select new People {
+                             Name = x,
+                         };
+            //var peopleOderedName = people.OrderBy(x => x.Name);
+            var peopleOrderedShortend = from x in people
+                                        select new People {
+                                            Name = x.Name.Substring(0, 3),
+                                        };
+            peopleOrderedShortend = peopleOrderedShortend.OrderBy(x => x.Name);
+            Assert.AreEqual(names.Count(), peopleOrderedShortend.Count());
+ 
+        }
     }
 }
