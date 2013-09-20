@@ -16,10 +16,12 @@ namespace UnitTestProject1 {
             /* create a new list of people each one has a name from the 
              * list names
              */
-            var people = from x in names
+            var people = names.Select(x => new People { Name = x });
+            /*var people = from x in names
                          select new People {
                              Name = x,
                          };
+             */
             Assert.AreEqual(names.Count(), people.Count());
         }
 
@@ -28,10 +30,7 @@ namespace UnitTestProject1 {
         public void PeopleStartWithM() {
             var names = new[] {"Bessie", "Vashti", "Frederica", "Nisha", "Kendall", "Magdalena", "Brendon"
             , "Eve", "Manda", "Elvera", "Miquel", "Tyra", "Lucie", "Marvella", "Tracee", "Ramiro", "Irene", "Davina", "Jeromy" , "Siu"};
-            var people = from x in names
-                         select new People {
-                             Name = x,
-                         };
+            var people = names.Select(x => new People { Name = x });
             /* only get the ones with a name that starts with an M */
             var peopleNameM = people.Where(x => x.Name.StartsWith("M"));
             Assert.AreEqual(4, peopleNameM.Count());
@@ -42,15 +41,9 @@ namespace UnitTestProject1 {
         public void PeoplesNamesToUppercase() {
             var names = new[] {"Bessie", "Vashti", "Frederica", "Nisha", "Kendall", "Magdalena", "Brendon"
             , "Eve", "Manda", "Elvera", "Miquel", "Tyra", "Lucie", "Marvella", "Tracee", "Ramiro", "Irene", "Davina", "Jeromy" , "Siu"};
-            var people = from x in names
-                         select new People {
-                             Name = x,
-                         };
+            var people = names.Select(x => new People { Name = x });
             // Create a new list of people but with the names to upper case
-            var peopleUpperCase = from x in people
-                                  select new People {
-                                      Name = x.Name.ToUpper(),
-                                  };
+            var peopleUpperCase = people.Select(x => x.Name = x.Name.ToUpper());
             Assert.AreEqual(names.Count(), peopleUpperCase.Count());
 
         }
@@ -60,10 +53,7 @@ namespace UnitTestProject1 {
         public void PeoplesNameLength() {
             var names = new[] {"Bessie", "Vashti", "Frederica", "Nisha", "Kendall", "Magdalena", "Brendon"
             , "Eve", "Manda", "Elvera", "Miquel", "Tyra", "Lucie", "Marvella", "Tracee", "Ramiro", "Irene", "Davina", "Jeromy" , "Siu"};
-            var people = from x in names
-                         select new People {
-                             Name = x,
-                         };
+            var people = names.Select(x => new People { Name = x });
             /*create a list that holds the lengths of each people object and then turn it into an array
              */
             var peopleNameLength = people.Select(x => x.Name.Length).ToArray();
@@ -75,21 +65,12 @@ namespace UnitTestProject1 {
         public void PeopleOrderSmallName() {
             var names = new[] {"Bessie", "Vashti", "Frederica", "Nisha", "Kendall", "Magdalena", "Brendon"
             , "Eve", "Manda", "Elvera", "Miquel", "Tyra", "Lucie", "Marvella", "Tracee", "Ramiro", "Irene", "Davina", "Jeromy" , "Siu"};
-            var people = from x in names
-                         select new People {
-                             Name = x,
-                         };
-            /* i couldn't get the order by to work in this form so i called it later 
-             * this creates new people with the name as only the first 3 chars
+            var people = names.Select(x => new People { Name = x });
+            /*create a new list of people witht he name shortened to just the first 3 letters
+             * and ordered by name 
              */ 
-            var peopleOrderedShortend = from x in people
-                                        select new People {
-                                            Name = x.Name.Substring(0, 3),
-                                        };
-            //order by name
-            peopleOrderedShortend = peopleOrderedShortend.OrderBy(x => x.Name);
+            var peopleOrderedShortend = people.Select(x => new People { Name = x.Name.Substring(0, 3) }).OrderBy(x => x.Name);
             Assert.AreEqual(names.Count(), peopleOrderedShortend.Count());
-
         }
     }
 }
