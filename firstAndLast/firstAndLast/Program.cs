@@ -12,7 +12,12 @@ namespace firstAndLast
             System.Console.WriteLine("What is your username");
             var response = System.Console.ReadLine();
             System.Console.WriteLine("Here's your profile info");
-            System.Console.Write(GetProfile(response));
+            System.Console.Write(GetProfile(response)+"\n");
+
+            var db = new DataAccess.Test1Entities();
+            foreach (var item in db.Contacts) {
+                System.Console.WriteLine(item.FirstName + " " + item.LastName);
+            }
             System.Console.ReadLine();
         }
 

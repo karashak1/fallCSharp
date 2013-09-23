@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "firstAndLast", "firstAndLas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{72E0A78B-D26C-408E-BEF9-1556EDABEADD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "..\DataAccess\DataAccess.csproj", "{DCC74C5B-11D0-49F2-B49F-16806408B064}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{72E0A78B-D26C-408E-BEF9-1556EDABEADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72E0A78B-D26C-408E-BEF9-1556EDABEADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72E0A78B-D26C-408E-BEF9-1556EDABEADD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCC74C5B-11D0-49F2-B49F-16806408B064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCC74C5B-11D0-49F2-B49F-16806408B064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCC74C5B-11D0-49F2-B49F-16806408B064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCC74C5B-11D0-49F2-B49F-16806408B064}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
