@@ -12,25 +12,26 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Contact
+    public partial class Company
     {
-        public Contact()
+        public Company()
         {
+            this.Contacts = new HashSet<Contact>();
+            this.PhoneNumbers = new HashSet<PhoneNumber>();
             this.EmailAddresses = new HashSet<EmailAddress>();
             this.Addresses = new HashSet<Address>();
-            this.PhoneNumbers = new HashSet<PhoneNumber>();
-            this.Companies = new HashSet<Company>();
         }
     
         public int Id { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public System.DateTime create_at { get; set; }
+        public System.DateTime created_at { get; set; }
         public System.DateTime updated_at { get; set; }
+        public string name { get; set; }
+        public string industry { get; set; }
     
+        public virtual ICollection<Contact> Contacts { get; set; }
+        public virtual Supplier Supplier { get; set; }
+        public virtual ICollection<PhoneNumber> PhoneNumbers { get; set; }
         public virtual ICollection<EmailAddress> EmailAddresses { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
-        public virtual ICollection<PhoneNumber> PhoneNumbers { get; set; }
-        public virtual ICollection<Company> Companies { get; set; }
     }
 }

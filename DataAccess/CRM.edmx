@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="CRM.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="CRMTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CRM" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="CRMContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contacts" EntityType="CRM.Contact" />
+          <EntitySet Name="PhoneNumbers" EntityType="CRM.PhoneNumber" />
+          <EntitySet Name="EmailAddresses" EntityType="CRM.EmailAddress" />
+          <AssociationSet Name="ContactEmailAddress" Association="CRM.ContactEmailAddress">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="EmailAddress" EntitySet="EmailAddresses" />
+          </AssociationSet>
+          <EntitySet Name="Addresses" EntityType="CRM.Address" />
+          <AssociationSet Name="ContactAddress" Association="CRM.ContactAddress">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="ContactPhoneNumber" Association="CRM.ContactPhoneNumber">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="PhoneNumber" EntitySet="PhoneNumbers" />
+          </AssociationSet>
+          <EntitySet Name="Companies" EntityType="CRM.Company" />
+          <AssociationSet Name="worksFor" Association="CRM.worksFor">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Company" EntitySet="Companies" />
+          </AssociationSet>
+          <EntitySet Name="Suppliers" EntityType="CRM.Supplier" />
+          <AssociationSet Name="CompanySupplier" Association="CRM.CompanySupplier">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="CompanyPhoneNumber" Association="CRM.CompanyPhoneNumber">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="PhoneNumber" EntitySet="PhoneNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="CompanyEmailAddress" Association="CRM.CompanyEmailAddress">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="EmailAddress" EntitySet="EmailAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="CompanyAddress" Association="CRM.CompanyAddress">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="LastName" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" />
+          <Property Type="DateTime" Name="create_at" Nullable="false" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" />
+          <NavigationProperty Name="EmailAddresses" Relationship="CRM.ContactEmailAddress" FromRole="Contact" ToRole="EmailAddress" />
+          <NavigationProperty Name="Addresses" Relationship="CRM.ContactAddress" FromRole="Contact" ToRole="Address" />
+          <NavigationProperty Name="PhoneNumbers" Relationship="CRM.ContactPhoneNumber" FromRole="Contact" ToRole="PhoneNumber" />
+          <NavigationProperty Name="Companies" Relationship="CRM.worksFor" FromRole="Contact" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="PhoneNumber">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" />
+          <Property Type="String" Name="type" Nullable="false" />
+          <Property Type="String" Name="value" Nullable="false" />
+          <Property Type="Int32" Name="ContactId" Nullable="false" />
+          <NavigationProperty Name="Contact" Relationship="CRM.ContactPhoneNumber" FromRole="PhoneNumber" ToRole="Contact" />
+          <Property Type="Int32" Name="ContactId1" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="CRM.CompanyPhoneNumber" FromRole="PhoneNumber" ToRole="Company" />
+          <Property Type="Int32" Name="CompanyId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmailAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="create_at" Nullable="false" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" />
+          <Property Type="String" Name="type" Nullable="false" />
+          <Property Type="String" Name="value" Nullable="false" />
+          <NavigationProperty Name="Contact" Relationship="CRM.ContactEmailAddress" FromRole="EmailAddress" ToRole="Contact" />
+          <Property Type="Int32" Name="ContactId" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="CRM.CompanyEmailAddress" FromRole="EmailAddress" ToRole="Company" />
+          <Property Type="Int32" Name="CompanyId" Nullable="false" />
+        </EntityType>
+        <Association Name="ContactEmailAddress">
+          <End Type="CRM.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="CRM.EmailAddress" Role="EmailAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmailAddress">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="create_at" Nullable="false" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" />
+          <Property Type="String" Name="street" Nullable="false" />
+          <Property Type="String" Name="city" Nullable="false" />
+          <Property Type="String" Name="state" Nullable="false" />
+          <Property Type="String" Name="zip" Nullable="false" />
+          <NavigationProperty Name="Contact" Relationship="CRM.ContactAddress" FromRole="Address" ToRole="Contact" />
+          <Property Type="Int32" Name="ContactId" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="CRM.CompanyAddress" FromRole="Address" ToRole="Company" />
+        </EntityType>
+        <Association Name="ContactAddress">
+          <End Type="CRM.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="CRM.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContactPhoneNumber">
+          <End Type="CRM.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="CRM.PhoneNumber" Role="PhoneNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhoneNumber">
+              <PropertyRef Name="ContactId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" />
+          <Property Type="String" Name="industry" Nullable="false" />
+          <NavigationProperty Name="Contacts" Relationship="CRM.worksFor" FromRole="Company" ToRole="Contact" />
+          <NavigationProperty Name="Supplier" Relationship="CRM.CompanySupplier" FromRole="Company" ToRole="Supplier" />
+          <NavigationProperty Name="PhoneNumbers" Relationship="CRM.CompanyPhoneNumber" FromRole="Company" ToRole="PhoneNumber" />
+          <NavigationProperty Name="EmailAddresses" Relationship="CRM.CompanyEmailAddress" FromRole="Company" ToRole="EmailAddress" />
+          <NavigationProperty Name="Addresses" Relationship="CRM.CompanyAddress" FromRole="Company" ToRole="Address" />
+        </EntityType>
+        <Association Name="worksFor">
+          <End Type="CRM.Contact" Role="Contact" Multiplicity="*" />
+          <End Type="CRM.Company" Role="Company" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="create_at" Nullable="false" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="CRM.CompanySupplier" FromRole="Supplier" ToRole="Company" />
+        </EntityType>
+        <Association Name="CompanySupplier">
+          <End Type="CRM.Company" Role="Company" Multiplicity="0..1" />
+          <End Type="CRM.Supplier" Role="Supplier" Multiplicity="1" />
+        </Association>
+        <Association Name="CompanyPhoneNumber">
+          <End Type="CRM.Company" Role="Company" Multiplicity="1" />
+          <End Type="CRM.PhoneNumber" Role="PhoneNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhoneNumber">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CompanyEmailAddress">
+          <End Type="CRM.Company" Role="Company" Multiplicity="1" />
+          <End Type="CRM.EmailAddress" Role="EmailAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmailAddress">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CompanyAddress">
+          <End Type="CRM.Company" Role="Company" Multiplicity="1" />
+          <End Type="CRM.Address" Role="Address" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="CRM" />
+        <Alias Key="Target" Value="CRM.Store" />
+        <EntityContainerMapping CdmEntityContainer="CRMContainer" StorageEntityContainer="CRMTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

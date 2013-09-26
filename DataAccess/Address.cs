@@ -12,16 +12,16 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class PhoneNumber
+    public partial class Address
     {
         public int Id { get; set; }
-        public System.DateTime created_at { get; set; }
+        public System.DateTime create_at { get; set; }
         public System.DateTime updated_at { get; set; }
-        public string type { get; set; }
-        public string value { get; set; }
+        public string street { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public string zip { get; set; }
         public int ContactId { get; set; }
-        public int ContactId1 { get; set; }
-        public int CompanyId { get; set; }
     
         public virtual Contact Contact { get; set; }
         public virtual Company Company { get; set; }
