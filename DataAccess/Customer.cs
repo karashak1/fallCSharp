@@ -12,18 +12,18 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Supplier
+    public partial class Customer
     {
-        public Supplier()
+        public Customer()
         {
-            this.Items = new HashSet<Item>();
+            this.Orders = new HashSet<Order>();
         }
     
         public int Id { get; set; }
-        public System.DateTime create_at { get; set; }
-        public System.DateTime updated_at { get; set; }
+        public string created_at { get; set; }
+        public string updated_at { get; set; }
     
-        public virtual Company Company { get; set; }
-        public virtual ICollection<Item> Items { get; set; }
+        public virtual Contact Contact { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

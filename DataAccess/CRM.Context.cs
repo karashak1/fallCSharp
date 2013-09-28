@@ -31,5 +31,10 @@ namespace DataAccess
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Stock> Stocks { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Activity> Activities { get; set; }
     }
 }

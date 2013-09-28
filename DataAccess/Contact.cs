@@ -20,6 +20,7 @@ namespace DataAccess
             this.Addresses = new HashSet<Address>();
             this.PhoneNumbers = new HashSet<PhoneNumber>();
             this.Companies = new HashSet<Company>();
+            this.Activities = new HashSet<Activity>();
         }
     
         public int Id { get; set; }
@@ -32,5 +33,7 @@ namespace DataAccess
         public virtual ICollection<Address> Addresses { get; set; }
         public virtual ICollection<PhoneNumber> PhoneNumbers { get; set; }
         public virtual ICollection<Company> Companies { get; set; }
+        public virtual ICollection<Activity> Activities { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }

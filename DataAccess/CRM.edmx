@@ -51,6 +51,35 @@
             <End Role="Company" EntitySet="Companies" />
             <End Role="Address" EntitySet="Addresses" />
           </AssociationSet>
+          <EntitySet Name="Items" EntityType="CRM.Item" />
+          <AssociationSet Name="supplies" Association="CRM.supplies">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <EntitySet Name="Stocks" EntityType="CRM.Stock" />
+          <EntitySet Name="Orders" EntityType="CRM.Order" />
+          <EntitySet Name="Customers" EntityType="CRM.Customer" />
+          <EntitySet Name="Activities" EntityType="CRM.Activity" />
+          <AssociationSet Name="ContactActivity" Association="CRM.likes">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Activity" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="isInStock" Association="CRM.isInStock">
+            <End Role="Stock" EntitySet="Stocks" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="is_a" Association="CRM.ContactCustomer">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="made" Association="CRM.made">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="OrderItem" Association="CRM.OrderItem">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Contact">
           <Key>
@@ -65,6 +94,8 @@
           <NavigationProperty Name="Addresses" Relationship="CRM.ContactAddress" FromRole="Contact" ToRole="Address" />
           <NavigationProperty Name="PhoneNumbers" Relationship="CRM.ContactPhoneNumber" FromRole="Contact" ToRole="PhoneNumber" />
           <NavigationProperty Name="Companies" Relationship="CRM.worksFor" FromRole="Contact" ToRole="Company" />
+          <NavigationProperty Name="Activities" Relationship="CRM.likes" FromRole="Contact" ToRole="Activity" />
+          <NavigationProperty Name="Customer" Relationship="CRM.ContactCustomer" FromRole="Contact" ToRole="Customer" />
         </EntityType>
         <EntityType Name="PhoneNumber">
           <Key>
@@ -173,6 +204,7 @@
           <Property Type="DateTime" Name="create_at" Nullable="false" />
           <Property Type="DateTime" Name="updated_at" Nullable="false" />
           <NavigationProperty Name="Company" Relationship="CRM.CompanySupplier" FromRole="Supplier" ToRole="Company" />
+          <NavigationProperty Name="Items" Relationship="CRM.supplies" FromRole="Supplier" ToRole="Item" />
         </EntityType>
         <Association Name="CompanySupplier">
           <End Type="CRM.Company" Role="Company" Multiplicity="0..1" />
@@ -205,6 +237,120 @@
         <Association Name="CompanyAddress">
           <End Type="CRM.Company" Role="Company" Multiplicity="1" />
           <End Type="CRM.Address" Role="Address" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" />
+          <NavigationProperty Name="Supplier" Relationship="CRM.supplies" FromRole="Item" ToRole="Supplier" />
+          <Property Type="Int32" Name="SupplierId" Nullable="false" />
+          <Property Type="String" Name="item_name" Nullable="false" />
+          <Property Type="Double" Name="price" Nullable="false" />
+          <Property Type="Int32" Name="SupplierId1" Nullable="false" />
+          <NavigationProperty Name="Stock" Relationship="CRM.isInStock" FromRole="Item" ToRole="Stock" />
+          <Property Type="Int32" Name="StockId" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="CRM.OrderItem" FromRole="Item" ToRole="Order" />
+        </EntityType>
+        <Association Name="supplies">
+          <End Type="CRM.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="CRM.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" />
+          <NavigationProperty Name="Items" Relationship="CRM.isInStock" FromRole="Stock" ToRole="Item" />
+          <Property Type="Int32" Name="quantity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="create_at" Nullable="false" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="CRM.made" FromRole="Order" ToRole="Customer" />
+          <Property Type="Int32" Name="CustomerId" Nullable="false" />
+          <NavigationProperty Name="Items" Relationship="CRM.OrderItem" FromRole="Order" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="created_at" Nullable="false" />
+          <Property Type="String" Name="updated_at" Nullable="false" />
+          <NavigationProperty Name="Contact" Relationship="CRM.ContactCustomer" FromRole="Customer" ToRole="Contact" />
+          <NavigationProperty Name="Orders" Relationship="CRM.made" FromRole="Customer" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" />
+          <Property Type="DateTime" Name="updated_at" Nullable="false" />
+          <NavigationProperty Name="Contact" Relationship="CRM.likes" FromRole="Activity" ToRole="Contact" />
+          <Property Type="Int32" Name="ContactId" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" />
+        </EntityType>
+        <Association Name="likes">
+          <End Type="CRM.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="CRM.Activity" Role="Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="isInStock">
+          <End Type="CRM.Stock" Role="Stock" Multiplicity="1" />
+          <End Type="CRM.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stock">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="StockId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContactCustomer">
+          <End Type="CRM.Contact" Role="Contact" Multiplicity="0..1" />
+          <End Type="CRM.Customer" Role="Customer" Multiplicity="1" />
+        </Association>
+        <Association Name="made">
+          <End Type="CRM.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="CRM.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrderItem">
+          <End Type="CRM.Order" Role="Order" Multiplicity="*" />
+          <End Type="CRM.Item" Role="Item" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>

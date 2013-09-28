@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activity.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Address.cs">
       <DependentUpon>CRM.tt</DependentUpon>
     </Compile>
@@ -70,13 +73,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CRM.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
     <Compile Include="EmailAddress.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Item.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
       <DependentUpon>CRM.tt</DependentUpon>
     </Compile>
     <Compile Include="PhoneNumber.cs">
       <DependentUpon>CRM.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stock.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Supplier.cs">
       <DependentUpon>CRM.tt</DependentUpon>
     </Compile>

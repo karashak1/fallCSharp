@@ -12,9 +12,9 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Supplier
+    public partial class Order
     {
-        public Supplier()
+        public Order()
         {
             this.Items = new HashSet<Item>();
         }
@@ -22,8 +22,9 @@ namespace DataAccess
         public int Id { get; set; }
         public System.DateTime create_at { get; set; }
         public System.DateTime updated_at { get; set; }
+        public int CustomerId { get; set; }
     
-        public virtual Company Company { get; set; }
+        public virtual Customer Customer { get; set; }
         public virtual ICollection<Item> Items { get; set; }
     }
 }

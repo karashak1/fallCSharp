@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6a4371e0c75e49b5907f07a9083941d3" Name="Diagram1" ZoomLevel="82" >
+      <Diagram DiagramId="6a4371e0c75e49b5907f07a9083941d3" Name="Diagram1" ZoomLevel="34" >
         <EntityTypeShape EntityType="CRM.Contact" Width="1.5" PointX="8" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CRM.PhoneNumber" Width="1.5" PointX="17" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CRM.EmailAddress" Width="1.5" PointX="13.875" PointY="1" />
@@ -19,6 +19,17 @@
         <AssociationConnector Association="CRM.CompanyPhoneNumber" />
         <AssociationConnector Association="CRM.CompanyEmailAddress" />
         <AssociationConnector Association="CRM.CompanyAddress" />
+        <EntityTypeShape EntityType="CRM.Item" Width="1.5" PointX="6" PointY="8.25" />
+        <AssociationConnector Association="CRM.supplies" />
+        <EntityTypeShape EntityType="CRM.Stock" Width="1.5" PointX="10" PointY="10.5" />
+        <EntityTypeShape EntityType="CRM.Order" Width="1.5" PointX="3.5" PointY="10.875" />
+        <EntityTypeShape EntityType="CRM.Customer" Width="1.5" PointX="3.25" PointY="7.25" />
+        <EntityTypeShape EntityType="CRM.Activity" Width="1.5" PointX="10.875" PointY="4.875" />
+        <AssociationConnector Association="CRM.likes" />
+        <AssociationConnector Association="CRM.isInStock" />
+        <AssociationConnector Association="CRM.ContactCustomer" />
+        <AssociationConnector Association="CRM.made" />
+        <AssociationConnector Association="CRM.OrderItem" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
