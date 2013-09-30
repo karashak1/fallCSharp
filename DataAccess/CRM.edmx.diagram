@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6a4371e0c75e49b5907f07a9083941d3" Name="Diagram1" ZoomLevel="34" >
+      <Diagram DiagramId="6a4371e0c75e49b5907f07a9083941d3" Name="Diagram1" ZoomLevel="74" >
         <EntityTypeShape EntityType="CRM.Contact" Width="1.5" PointX="8" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CRM.PhoneNumber" Width="1.5" PointX="17" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CRM.EmailAddress" Width="1.5" PointX="13.875" PointY="1" />
@@ -30,6 +30,7 @@
         <AssociationConnector Association="CRM.ContactCustomer" />
         <AssociationConnector Association="CRM.made" />
         <AssociationConnector Association="CRM.OrderItem" />
+        <AssociationConnector Association="CRM.knows" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
