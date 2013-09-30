@@ -17,10 +17,13 @@ namespace DataAccess
         public int Id { get; set; }
         public System.DateTime created_at { get; set; }
         public System.DateTime updated_at { get; set; }
-        public string Value { get; set; }
-        public string Type { get; set; }
-        public int Contact_id { get; set; }
+        public string type { get; set; }
+        public string value { get; set; }
+        public int ContactId { get; set; }
+        public int ContactId1 { get; set; }
+        public int CompanyId { get; set; }
     
         public virtual Contact Contact { get; set; }
+        public virtual Company Company { get; set; }
     }
 }

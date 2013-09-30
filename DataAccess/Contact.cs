@@ -16,16 +16,25 @@ namespace DataAccess
     {
         public Contact()
         {
+            this.EmailAddresses = new HashSet<EmailAddress>();
+            this.Addresses = new HashSet<Address>();
             this.PhoneNumbers = new HashSet<PhoneNumber>();
+            this.Companies = new HashSet<Company>();
+            this.Activities = new HashSet<Activity>();
         }
     
         public int Id { get; set; }
-        public System.DateTime created_at { get; set; }
-        public System.DateTime updated_at { get; set; }
-        public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Email { get; set; }
+        public string FirstName { get; set; }
+        public System.DateTime create_at { get; set; }
+        public System.DateTime updated_at { get; set; }
+        public int ContactId { get; set; }
     
+        public virtual ICollection<EmailAddress> EmailAddresses { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
         public virtual ICollection<PhoneNumber> PhoneNumbers { get; set; }
+        public virtual ICollection<Company> Companies { get; set; }
+        public virtual ICollection<Activity> Activities { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }
