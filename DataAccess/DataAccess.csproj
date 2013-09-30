@@ -56,7 +56,7 @@
       <DependentUpon>CRM.tt</DependentUpon>
     </Compile>
     <Compile Include="Contact.cs">
-      <DependentUpon>Test1.tt</DependentUpon>
+      <DependentUpon>CRM.tt</DependentUpon>
     </Compile>
     <Compile Include="CRM.Context.cs">
       <AutoGen>True</AutoGen>
@@ -86,7 +86,7 @@
       <DependentUpon>CRM.tt</DependentUpon>
     </Compile>
     <Compile Include="PhoneNumber.cs">
-      <DependentUpon>Test1.tt</DependentUpon>
+      <DependentUpon>CRM.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stock.cs">
