@@ -18,7 +18,7 @@ namespace DataAccess
         public System.DateTime created_at { get; set; }
         public System.DateTime updated_at { get; set; }
         public int ContactId { get; set; }
-        public string name { get; set; }
+        public string activityName { get; set; }
     
         public virtual Contact Contact { get; set; }
     }

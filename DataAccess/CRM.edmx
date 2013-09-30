@@ -35,7 +35,7 @@
             <End Role="Company" EntitySet="Companies" />
           </AssociationSet>
           <EntitySet Name="Suppliers" EntityType="CRM.Supplier" />
-          <AssociationSet Name="CompanySupplier" Association="CRM.CompanySupplier">
+          <AssociationSet Name="can_be_a" Association="CRM.CompanySupplier">
             <End Role="Company" EntitySet="Companies" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
@@ -60,7 +60,7 @@
           <EntitySet Name="Orders" EntityType="CRM.Order" />
           <EntitySet Name="Customers" EntityType="CRM.Customer" />
           <EntitySet Name="Activities" EntityType="CRM.Activity" />
-          <AssociationSet Name="ContactActivity" Association="CRM.likes">
+          <AssociationSet Name="enjoys" Association="CRM.likes">
             <End Role="Contact" EntitySet="Contacts" />
             <End Role="Activity" EntitySet="Activities" />
           </AssociationSet>
@@ -96,6 +96,7 @@
           <NavigationProperty Name="Companies" Relationship="CRM.worksFor" FromRole="Contact" ToRole="Company" />
           <NavigationProperty Name="Activities" Relationship="CRM.likes" FromRole="Contact" ToRole="Activity" />
           <NavigationProperty Name="Customer" Relationship="CRM.ContactCustomer" FromRole="Contact" ToRole="Customer" />
+          <Property Type="Int32" Name="ContactId" Nullable="false" />
         </EntityType>
         <EntityType Name="PhoneNumber">
           <Key>
@@ -306,7 +307,7 @@
           <Property Type="DateTime" Name="updated_at" Nullable="false" />
           <NavigationProperty Name="Contact" Relationship="CRM.likes" FromRole="Activity" ToRole="Contact" />
           <Property Type="Int32" Name="ContactId" Nullable="false" />
-          <Property Type="String" Name="name" Nullable="false" />
+          <Property Type="String" Name="activityName" Nullable="false" />
         </EntityType>
         <Association Name="likes">
           <End Type="CRM.Contact" Role="Contact" Multiplicity="1" />
