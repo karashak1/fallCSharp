@@ -1,12 +1,29 @@
 ﻿
 
 using System.Net.Http;
+using System.Linq;
 namespace firstAndLast
 {
     public class Program
     {
         public static void Main(string[] args)
         {
+            //display items 
+            var db = new DataAccess.ContactModelContainer();
+            var keywords = db.Keywords;
+            foreach (var k in keywords) {
+                System.Console.WriteLine("{0} - {1}", k.Parent.Name, k.Name);
+            }
+            System.Console.ReadLine();
+            //add item
+            System.Console.WriteLine("Enter a contact in the following format (FirstName LastName Phone)");
+            var results = System.Console.ReadLine();
+            var values = results.Split();
+            var contact = new DataAccess.Contact {FirstName = values[0], LastName = values[1], KeywordsId = 5 };
+            db.Contacts.Add(contact);
+            contact.ContractMethods.Add(new DataAccess.ContactMethod { Contact = 8, Value= values[2] });
+            db.SaveChanges();
+            /*
             System.Console.WriteLine("Hello World");
             //System.Console.ReadLine();
             System.Console.WriteLine("What is your username");
@@ -19,6 +36,7 @@ namespace firstAndLast
                 System.Console.WriteLine(item.FirstName + " " + item.LastName);
             }
             System.Console.ReadLine();
+             */ 
         }
 
         public static string GetProfile(string username)

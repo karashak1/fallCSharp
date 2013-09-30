@@ -12,19 +12,22 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Contact
+    public partial class Keyword
     {
-        public Contact()
+        public Keyword()
         {
+            this.Children = new HashSet<Keyword>();
+            this.Contacts = new HashSet<Contact>();
             this.ContractMethods = new HashSet<ContactMethod>();
         }
     
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Name { get; set; }
         public int KeywordsId { get; set; }
     
-        public virtual Keyword Keyword { get; set; }
+        public virtual ICollection<Keyword> Children { get; set; }
+        public virtual Keyword Parent { get; set; }
+        public virtual ICollection<Contact> Contacts { get; set; }
         public virtual ICollection<ContactMethod> ContractMethods { get; set; }
     }
 }

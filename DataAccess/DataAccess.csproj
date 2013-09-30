@@ -56,7 +56,25 @@
       <DependentUpon>CRM.tt</DependentUpon>
     </Compile>
     <Compile Include="Contact.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>ContactModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactMethod.cs">
+      <DependentUpon>ContactModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContactModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContactModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContactModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="CRM.Context.cs">
       <AutoGen>True</AutoGen>
@@ -81,6 +99,9 @@
     </Compile>
     <Compile Include="Item.cs">
       <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Keyword.cs">
+      <DependentUpon>ContactModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Order.cs">
       <DependentUpon>CRM.tt</DependentUpon>
@@ -123,6 +144,23 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CRM.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="ContactModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ContactModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ContactModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ContactModel.edmx</DependentUpon>
+      <LastGenOutput>ContactModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="ContactModel.edmx.diagram">
+      <DependentUpon>ContactModel.edmx</DependentUpon>
+    </None>
+    <None Include="ContactModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ContactModel.edmx</DependentUpon>
+      <LastGenOutput>ContactModel.cs</LastGenOutput>
+    </None>
     <None Include="CRM.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CRM.edmx</DependentUpon>
@@ -153,6 +191,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ContactModel.edmx.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
