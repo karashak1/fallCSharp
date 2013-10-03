@@ -46,120 +46,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activity.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+    <Compile Include="Migrations\201310032123117_Start.cs" />
+    <Compile Include="Migrations\201310032123117_Start.Designer.cs">
+      <DependentUpon>201310032123117_Start.cs</DependentUpon>
     </Compile>
-    <Compile Include="Address.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+    <Compile Include="Migrations\201310032142421_Addresses.cs" />
+    <Compile Include="Migrations\201310032142421_Addresses.Designer.cs">
+      <DependentUpon>201310032142421_Addresses.cs</DependentUpon>
     </Compile>
-    <Compile Include="Company.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contact.cs">
-      <DependentUpon>ContactModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ContactMethod.cs">
-      <DependentUpon>ContactModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ContactModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ContactModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ContactModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ContactModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ContactModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ContactModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="CRM.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CRM.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CRM.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CRM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CRM.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CRM.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Customer.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EmailAddress.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Item.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Keyword.cs">
-      <DependentUpon>ContactModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Order.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PhoneNumber.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\ContactMethod.cs" />
+    <Compile Include="Models\CSharpContext.cs" />
+    <Compile Include="Models\Keyword.cs" />
+    <Compile Include="Models\Mapping\ContactMap.cs" />
+    <Compile Include="Models\Mapping\ContactMethodMap.cs" />
+    <Compile Include="Models\Mapping\KeywordMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Stock.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Supplier.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="CRM.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CRM.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <EntityDeploy Include="ContactModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ContactModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="ContactModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ContactModel.edmx</DependentUpon>
-      <LastGenOutput>ContactModel.Context.cs</LastGenOutput>
-    </None>
-    <None Include="ContactModel.edmx.diagram">
-      <DependentUpon>ContactModel.edmx</DependentUpon>
-    </None>
-    <None Include="ContactModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ContactModel.edmx</DependentUpon>
-      <LastGenOutput>ContactModel.cs</LastGenOutput>
-    </None>
-    <None Include="CRM.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CRM.edmx</DependentUpon>
-      <LastGenOutput>CRM.Context.cs</LastGenOutput>
-    </None>
-    <None Include="CRM.edmx.diagram">
-      <DependentUpon>CRM.edmx</DependentUpon>
-    </None>
-    <None Include="CRM.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CRM.edmx</DependentUpon>
-      <LastGenOutput>CRM.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ContactModel.edmx.sql" />
+    <EmbeddedResource Include="Migrations\201310032123117_Start.resx">
+      <DependentUpon>201310032123117_Start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310032142421_Addresses.resx">
+      <DependentUpon>201310032142421_Addresses.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

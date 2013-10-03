@@ -9,7 +9,7 @@ namespace firstAndLast
         public static void Main(string[] args)
         {
             //display items 
-            var db = new DataAccess.ContactModelContainer();
+            var db = new DataAccess.Models.CSharpContext();
             var keywords = db.Keywords;
             foreach (var k in keywords) {
                 System.Console.WriteLine("{0} - {1}", k.Parent.Name, k.Name);
@@ -17,17 +17,17 @@ namespace firstAndLast
             System.Console.ReadLine();
             foreach (var c in db.Contacts) {
                 System.Console.WriteLine("{0} {1} - {2}", c.FirstName, c.LastName, c.Keyword.Name);
-                foreach (var item in c.ContractMethods) {
-                    System.Console.WriteLine("\t -- {0} {1} ", item.Type.Name, item.Value);
+                foreach (var item in c.ContactMethods) {
+                    System.Console.WriteLine("\t -- {0} {1} ", item.Keyword.Name, item.Value);
                 }
             }
             //add item
             System.Console.WriteLine("Enter a contact in the following format (FirstName LastName Phone)");
             var results = System.Console.ReadLine();
             var values = results.Split();
-            var contact = new DataAccess.Contact {FirstName = values[0], LastName = values[1], KeywordsId = 5 };
+            var contact = new DataAccess.Models.Contact {FirstName = values[0], LastName = values[1], KeywordsId = 5 };
             db.Contacts.Add(contact);
-            contact.ContractMethods.Add(new DataAccess.ContactMethod {KeywordID = 7, Value= values[2] });
+            contact.ContactMethods.Add(new DataAccess.Models.ContactMethod {KeywordID = 7, Value= values[2] });
             db.SaveChanges();
             /*
             System.Console.WriteLine("Hello World");
