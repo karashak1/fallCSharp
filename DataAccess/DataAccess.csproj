@@ -116,27 +116,6 @@
     <Compile Include="Supplier.cs">
       <DependentUpon>CRM.tt</DependentUpon>
     </Compile>
-    <Compile Include="Test1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Test1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Test1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Test1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Test1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Test1.edmx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Test1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Test1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
@@ -175,19 +154,6 @@
       <LastGenOutput>CRM.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
-    <None Include="Test1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Test1.edmx</DependentUpon>
-      <LastGenOutput>Test1.Context.cs</LastGenOutput>
-    </None>
-    <None Include="Test1.edmx.diagram">
-      <DependentUpon>Test1.edmx</DependentUpon>
-    </None>
-    <None Include="Test1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Test1.edmx</DependentUpon>
-      <LastGenOutput>Test1.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

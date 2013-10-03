@@ -17,6 +17,7 @@ namespace DataAccess
         public int Id { get; set; }
         public string Value { get; set; }
         public int ContactId { get; set; }
+        public int KeywordID { get; set; }
     
         public virtual Contact Contact { get; set; }
         public virtual Keyword Type { get; set; }

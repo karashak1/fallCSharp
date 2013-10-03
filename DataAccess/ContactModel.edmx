@@ -50,7 +50,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ContactId" Type="int" Nullable="false" />
-    <Property Name="Type_Id" Type="int" Nullable="false" />
+    <Property Name="KeywordID" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="KeywordsKeywords">
     <End Role="Keywords" Type="ContactModel.Store.Keywords" Multiplicity="1" />
@@ -96,7 +96,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ContractMethod">
-        <PropertyRef Name="Type_Id" />
+        <PropertyRef Name="KeywordID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -181,6 +181,7 @@
           <NavigationProperty Name="Contact" Relationship="ContactModel.ContactContractMethod" FromRole="ContractMethod" ToRole="Contact" />
           <Property Type="Int32" Name="ContactId" Nullable="false" />
           <NavigationProperty Name="Type" Relationship="ContactModel.ContractMethodKeyword" FromRole="ContractMethod" ToRole="Keyword" />
+          <Property Type="Int32" Name="KeywordID" Nullable="false" />
         </EntityType>
         <Association Name="ContactContractMethod">
           <End Type="ContactModel.Contact" Role="Contact" Multiplicity="1" />
@@ -197,6 +198,14 @@
         <Association Name="ContractMethodKeyword">
           <End Type="ContactModel.ContactMethod" Role="ContractMethod" Multiplicity="*" />
           <End Type="ContactModel.Keyword" Role="Keyword" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Keyword">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContractMethod">
+              <PropertyRef Name="KeywordID" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -229,17 +238,10 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Value" ColumnName="Value" />
           <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+          <ScalarProperty Name="KeywordID" ColumnName="KeywordID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="ContractMethodKeyword" TypeName="ContactModel.ContractMethodKeyword" StoreEntitySet="ContactMethods">
-      <EndProperty Name="Keyword">
-        <ScalarProperty Name="Id" ColumnName="Type_Id" />
-      </EndProperty>
-      <EndProperty Name="ContractMethod">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

@@ -15,19 +15,26 @@ namespace firstAndLast
                 System.Console.WriteLine("{0} - {1}", k.Parent.Name, k.Name);
             }
             System.Console.ReadLine();
+            foreach (var c in db.Contacts) {
+                System.Console.WriteLine("{0} {1} - {2}", c.FirstName, c.LastName, c.Keyword.Name);
+                foreach (var item in c.ContractMethods) {
+                    System.Console.WriteLine("\t -- {0} {1} ", item.Type.Name, item.Value);
+                }
+            }
             //add item
             System.Console.WriteLine("Enter a contact in the following format (FirstName LastName Phone)");
             var results = System.Console.ReadLine();
             var values = results.Split();
             var contact = new DataAccess.Contact {FirstName = values[0], LastName = values[1], KeywordsId = 5 };
             db.Contacts.Add(contact);
-            contact.ContractMethods.Add(new DataAccess.ContactMethod { Contact = 8, Value= values[2] });
+            contact.ContractMethods.Add(new DataAccess.ContactMethod {KeywordID = 7, Value= values[2] });
             db.SaveChanges();
             /*
             System.Console.WriteLine("Hello World");
             //System.Console.ReadLine();
             System.Console.WriteLine("What is your username");
             var response = System.Console.ReadLine();
+            
             System.Console.WriteLine("Here's your profile info");
             System.Console.Write(GetProfile(response)+"\n");
 
