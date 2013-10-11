@@ -4,13 +4,13 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="62*"/>
-            <RowDefinition Height="261*"/>
+            <RowDefinition Height="21*"/>
+            <RowDefinition Height="139*"/>
         </Grid.RowDefinitions>
-        <TextBox Text="{Binding Text}" HorizontalAlignment="Stretch" Height="23" Margin="45,29,0,0" TextWrapping="Wrap"  VerticalAlignment="Stretch" Width="120"/>
-        <Button Content="Button" HorizontalAlignment="Right" Margin="0,10,0.4,260.4" VerticalAlignment="Stretch" Width="75" Grid.RowSpan="1"/>
-        <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="10 />"
-        <ListBox ItemSource="{Binding List}"  HorizontalAlignment="Strech"  VerticalAlignment="Strech" Grid.Row="2"/>
+        <TextBox Text="{Binding Text}" HorizontalAlignment="Stretch" Margin="0,0,80,10" TextWrapping="Wrap" VerticalAlignment="Stretch"/>
+        <Button Content="Button" HorizontalAlignment="Right" Margin="0,0,0,10" VerticalAlignment="Stretch" Width="75" Click="Button_Click"/>
+        <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="10" />
+        <ListBox ItemsSource="{Binding List}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"/>
 
     </Grid>
 </Window>
