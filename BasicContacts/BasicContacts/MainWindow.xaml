@@ -7,10 +7,19 @@
             <RowDefinition Height="21*"/>
             <RowDefinition Height="139*"/>
         </Grid.RowDefinitions>
-        <TextBox Text="{Binding Text}" HorizontalAlignment="Stretch" Margin="0,0,80,10" TextWrapping="Wrap" VerticalAlignment="Stretch"/>
-        <Button Content="Button" HorizontalAlignment="Right" Margin="0,0,0,10" VerticalAlignment="Stretch" Width="75" Click="Button_Click"/>
+        <TextBox Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" Margin="10,10,90,10" TextWrapping="Wrap" VerticalAlignment="Stretch"/>
+        <Button Content="Button" HorizontalAlignment="Right" Margin="10,10,10,10" VerticalAlignment="Stretch" Width="75" Command="{Binding AddCommand}"/>
         <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="10" />
-        <ListBox ItemsSource="{Binding List}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"/>
+        <ListBox ItemsSource="{Binding List}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding Done}"></CheckBox>
+                        <TextBlock Text="{Binding Title}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
     </Grid>
 </Window>

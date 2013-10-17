@@ -23,8 +23,14 @@ namespace BasicContacts {
             DataContext = VM;
         }
         TodoVM VM = new TodoVM();
-        private void Button_Click(object sender, RoutedEventArgs e) {
-            VM.List.Add(VM.Text);
+
+        private void CheckBox_Checked_1(object sender, RoutedEventArgs e) {
+
         }
+        /*
+        private void Button_Click(object sender, RoutedEventArgs e) {
+            VM.AddTodo();
+        }
+         */ 
     }
 }
