@@ -1,0 +1,23 @@
+﻿<Window x:Class="MidTermProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="600" Width="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="10" />
+        <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="10"  Grid.Column="1"/>
+        <GridSplitter HorizontalAlignment="Right" VerticalAlignment="Stretch"  Width="10" />
+        <GridSplitter HorizontalAlignment="Right" VerticalAlignment="Stretch"  Width="10"  Grid.Row="1"/>
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="One Table"/>
+        <TextBlock Grid.Column="1" Grid.Row="0" Text="Two Table" />
+        <TextBlock Grid.Column="0" Grid.Row="1" Text="Three Table" />
+        <TextBlock Grid.Column="1" Grid.Row="1" Text="Four Table" />
+    </Grid>
+</Window>
