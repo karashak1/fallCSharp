@@ -11,18 +11,18 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <!--<GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="10" />
+        <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="10" />
         <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="10"  Grid.Column="1"/>
         <GridSplitter HorizontalAlignment="Right" VerticalAlignment="Stretch"  Width="10" />
-        <GridSplitter HorizontalAlignment="Right" VerticalAlignment="Stretch"  Width="10"  Grid.Row="1"/>-->
+        <GridSplitter HorizontalAlignment="Right" VerticalAlignment="Stretch"  Width="10"  Grid.Row="1"/>
         <Grid Grid.Column="0" Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="23*"/>
                 <RowDefinition Height="120*"/>
             </Grid.RowDefinitions>
-            <!--<TextBlock Grid.Row="0" Text="Size of Contacts" />-->
-            <TextBlock Grid.Row="0"  Text="{Binding ContactSize}" Margin="0,0,-0.6,-0.6" Grid.RowSpan="2" />
-            <ListView Grid.Row="1"  ItemsSource="{Binding Contacts}" Margin="0,0,0.4,0.4" Grid.RowSpan="2">
+            <TextBlock Grid.Row="0" Text="Size of Contacts =" HorizontalAlignment="Left"  />
+            <TextBlock Grid.Row="0" Text="{Binding ContactSize}" HorizontalAlignment="Center" />
+            <ListView Grid.Row="1"  ItemsSource="{Binding Contacts}" Margin="0,0,10,10" Grid.RowSpan="2">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -38,8 +38,9 @@
                 <RowDefinition Height="23*"/>
                 <RowDefinition Height="120*"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0"  Text="{Binding KeywordSize}" Margin="0,0,0.2,0.4" Grid.RowSpan="2" />
-            <ListView Grid.Row="1"  ItemsSource="{Binding Keywords}" Margin="0,0,0.2,0.4" Grid.RowSpan="2">
+            <TextBlock Grid.Row="0" Text="Size of Keywords =" HorizontalAlignment="Left"  />
+            <TextBlock Grid.Row="0" Text="{Binding KeywordSize}" HorizontalAlignment="Center" />
+            <ListView Grid.Row="1"  ItemsSource="{Binding Keywords}" Margin="0,0,0,10" Grid.RowSpan="2">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -55,9 +56,9 @@
                 <RowDefinition Height="23*"/>
                 <RowDefinition Height="120*"/>
             </Grid.RowDefinitions>
-            <!--<TextBlock Grid.Row="0" Text="Size of Contacts" />-->
-            <TextBlock Grid.Row="0"  Text="{Binding ContactMethodSize}" Margin="0,0,-0.6,-0.6" Grid.RowSpan="2" />
-            <ListView  Grid.Row="1" ItemsSource="{Binding ContactMethods}">
+            <TextBlock Grid.Row="0" Text="Size of ContactMethods =" HorizontalAlignment="Left"  />
+            <TextBlock Grid.Row="0" Text="{Binding ContactMethodSize}" HorizontalAlignment="Center" />
+            <ListView  Grid.Row="1" ItemsSource="{Binding ContactMethods}" Margin="0,0,10,0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -73,8 +74,8 @@
                 <RowDefinition Height="23*"/>
                 <RowDefinition Height="120*"/>
             </Grid.RowDefinitions>
-            <!--<TextBlock Grid.Row="0" Text="Size of Contacts" />-->
-            <TextBlock Grid.Row="0"  Text="{Binding AddressSize}" Margin="0,0,-0.6,-0.6" Grid.RowSpan="2" />
+            <TextBlock Grid.Row="0" Text="Size of Addresses =" HorizontalAlignment="Left"  />
+            <TextBlock Grid.Row="0" Text="{Binding AddressSize}" HorizontalAlignment="Center" />
             <ListView  Grid.Row="1" ItemsSource="{Binding Addresses}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
