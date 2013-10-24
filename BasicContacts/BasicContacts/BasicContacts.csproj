@@ -61,12 +61,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Contacts2VM.cs" />
+    <Compile Include="Contacts2Window.xaml.cs">
+      <DependentUpon>Contacts2Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ContactsVM.cs" />
     <Compile Include="ContactsWindow.xaml.cs">
       <DependentUpon>ContactsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TodoItem.cs" />
     <Compile Include="TodoVM.cs" />
+    <Page Include="Contacts2Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ContactsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -103,6 +111,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Contacts2VM.datasource" />
+    <None Include="Properties\DataSources\DataAccess.Models.Address.datasource" />
+    <None Include="Properties\DataSources\DataAccess.Models.Contact.datasource" />
+    <None Include="Properties\DataSources\DataAccess.Models.ContactMethod.datasource" />
+    <None Include="Properties\DataSources\DataAccess.Models.CSharpContext.datasource" />
+    <None Include="Properties\DataSources\DataAccess.Models.Keyword.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
