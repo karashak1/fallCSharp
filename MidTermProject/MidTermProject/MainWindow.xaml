@@ -82,6 +82,8 @@
                         <StackPanel>
                             <TextBlock Text="{Binding StreetAddress}" />
                             <TextBlock Text="{Binding City}" />
+                            <TextBlock Text="{Binding State}" />
+                            <TextBlock Text="{Binding Zip}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
