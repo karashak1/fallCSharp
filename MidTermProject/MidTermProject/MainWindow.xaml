@@ -11,13 +11,81 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="10" />
+        <!--<GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="10" />
         <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="10"  Grid.Column="1"/>
         <GridSplitter HorizontalAlignment="Right" VerticalAlignment="Stretch"  Width="10" />
-        <GridSplitter HorizontalAlignment="Right" VerticalAlignment="Stretch"  Width="10"  Grid.Row="1"/>
-        <TextBlock Grid.Column="0" Grid.Row="0" Text="One Table"/>
-        <TextBlock Grid.Column="1" Grid.Row="0" Text="Two Table" />
-        <TextBlock Grid.Column="0" Grid.Row="1" Text="Three Table" />
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="Four Table" />
+        <GridSplitter HorizontalAlignment="Right" VerticalAlignment="Stretch"  Width="10"  Grid.Row="1"/>-->
+        <Grid Grid.Column="0" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="120*"/>
+            </Grid.RowDefinitions>
+            <!--<TextBlock Grid.Row="0" Text="Size of Contacts" />-->
+            <TextBlock Grid.Row="0"  Text="{Binding ContactSize}" Margin="0,0,-0.6,-0.6" Grid.RowSpan="2" />
+            <ListView Grid.Row="1"  ItemsSource="{Binding Contacts}" Margin="0,0,0.4,0.4" Grid.RowSpan="2">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding FirstName}" />
+                            <TextBlock Text="{Binding LastName}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="120*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"  Text="{Binding KeywordSize}" Margin="0,0,0.2,0.4" Grid.RowSpan="2" />
+            <ListView Grid.Row="1"  ItemsSource="{Binding Keywords}" Margin="0,0,0.2,0.4" Grid.RowSpan="2">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        
+        <Grid  Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="120*"/>
+            </Grid.RowDefinitions>
+            <!--<TextBlock Grid.Row="0" Text="Size of Contacts" />-->
+            <TextBlock Grid.Row="0"  Text="{Binding ContactMethodSize}" Margin="0,0,-0.6,-0.6" Grid.RowSpan="2" />
+            <ListView  Grid.Row="1" ItemsSource="{Binding ContactMethods}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Value}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="120*"/>
+            </Grid.RowDefinitions>
+            <!--<TextBlock Grid.Row="0" Text="Size of Contacts" />-->
+            <TextBlock Grid.Row="0"  Text="{Binding AddressSize}" Margin="0,0,-0.6,-0.6" Grid.RowSpan="2" />
+            <ListView  Grid.Row="1" ItemsSource="{Binding Addresses}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding StreetAddress}" />
+                            <TextBlock Text="{Binding City}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        
     </Grid>
 </Window>

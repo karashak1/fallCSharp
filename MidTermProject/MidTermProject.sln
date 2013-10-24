@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidTermProject", "MidTermProject\MidTermProject.csproj", "{B63ABC9E-7D2B-4FD1-B795-C15D9C3288EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "..\DataAccess\DataAccess.csproj", "{DCC74C5B-11D0-49F2-B49F-16806408B064}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{B63ABC9E-7D2B-4FD1-B795-C15D9C3288EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B63ABC9E-7D2B-4FD1-B795-C15D9C3288EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B63ABC9E-7D2B-4FD1-B795-C15D9C3288EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCC74C5B-11D0-49F2-B49F-16806408B064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCC74C5B-11D0-49F2-B49F-16806408B064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCC74C5B-11D0-49F2-B49F-16806408B064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCC74C5B-11D0-49F2-B49F-16806408B064}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

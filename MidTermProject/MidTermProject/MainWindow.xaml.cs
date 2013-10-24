@@ -20,9 +20,13 @@ namespace MidTermProject
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        MainWindowVM VM = new MainWindowVM();
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = VM;
+            
         }
     }
 }
