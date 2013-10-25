@@ -22,7 +22,7 @@ namespace BasicContacts {
             DataContext = new Contacts2VM();
         }
 
-        private void Window_Loaded_1(object sender, RoutedEventArgs e) {
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
 
 
             System.Windows.Data.CollectionViewSource contacts2VMViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("contacts2VMViewSource")));

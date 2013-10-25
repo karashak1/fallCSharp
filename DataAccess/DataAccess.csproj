@@ -65,15 +65,16 @@
     <Compile Include="Migrations\201310242111362_Keywords.Designer.cs">
       <DependentUpon>201310242111362_Keywords.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201310242156383_NoConfiguration.cs" />
+    <Compile Include="Migrations\201310242156383_NoConfiguration.Designer.cs">
+      <DependentUpon>201310242156383_NoConfiguration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\ContactMethod.cs" />
     <Compile Include="Models\CSharpContext.cs" />
     <Compile Include="Models\Keyword.cs" />
-    <Compile Include="Models\Mapping\ContactMap.cs" />
-    <Compile Include="Models\Mapping\ContactMethodMap.cs" />
-    <Compile Include="Models\Mapping\KeywordMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201310242111362_Keywords.resx">
       <DependentUpon>201310242111362_Keywords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310242156383_NoConfiguration.resx">
+      <DependentUpon>201310242156383_NoConfiguration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

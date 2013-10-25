@@ -29,9 +29,9 @@ namespace DataAccess.Migrations
             //
             
             context.Keywords.AddOrUpdate(
-                new Keyword { Name = "Root", KeywordsId = 1 },
-                new Keyword { Name = "Person Types", KeywordsId = 1 },
-                new Keyword { Name = "Admin", KeywordsId = 2 }
+                new Keyword { Name = "Root", Parent_Id = 1 },
+                new Keyword { Name = "Person Types", Parent_Id = 1 },
+                new Keyword { Name = "Admin", Parent_Id = 2 }
             );
 
             context.Contacts.AddOrUpdate(

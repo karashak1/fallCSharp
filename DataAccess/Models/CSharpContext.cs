@@ -1,6 +1,5 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using DataAccess.Models.Mapping;
 
 namespace DataAccess.Models
 {
@@ -22,11 +21,5 @@ namespace DataAccess.Models
         public DbSet<Address> Addresses { get; set; }
 
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Configurations.Add(new ContactMethodMap());
-            modelBuilder.Configurations.Add(new ContactMap());
-            modelBuilder.Configurations.Add(new KeywordMap());
-        }
     }
 }
