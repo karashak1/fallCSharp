@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseVM.cs" />
     <Compile Include="Migrations\201310032123117_Start.cs" />
     <Compile Include="Migrations\201310032123117_Start.Designer.cs">
       <DependentUpon>201310032123117_Start.cs</DependentUpon>
