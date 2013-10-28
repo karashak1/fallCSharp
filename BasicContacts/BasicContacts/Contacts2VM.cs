@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 using DataAccess.Models;
 using System.Data.Entity;
 using System.Windows.Input;
+using DataAccess;
 
 namespace BasicContacts {
     public class Contacts2VM : BaseVM {
 
-        public ObservableCollection<Contact> Contacts { get; private set; }
+        CSharpContext _DB;
 
+        public ObservableCollection<Contact> Contacts { get; private set; }
         private Contact _CurrentContact;
         public Contact CurrentContact {
             get { return _CurrentContact; }
@@ -24,12 +26,22 @@ namespace BasicContacts {
 
         public ICommand SaveCommand { get; private set; }
 
-        public Contacts2VM() {
-            var db = new CSharpContext();
-            Contacts = db.Contacts.Local;
-            db.Contacts.ToList();
-            SaveCommand = new DelegateCommand(() => db.SaveChanges());
+        public ICommand AddCommand { get; private set; }
 
+        public Contacts2VM() {
+            int i = 0;
+            _DB = new CSharpContext();
+            Contacts = _DB.Contacts.Local;
+            Init();
+        }
+
+        async void Init() {
+            await Task.Run(() => { 
+                System.Threading.Thread.Sleep(5000); 
+            });
+
+            _DB.Contacts.ToList();
+            SaveCommand = new DelegateCommand(() => _DB.SaveChanges());
         }
     }
 }
