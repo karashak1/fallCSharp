@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccess.Models
@@ -8,9 +9,9 @@ namespace DataAccess.Models
     {
         public Keyword()
         {
-            this.ContactMethods = new List<ContactMethod>();
-            this.Contacts = new List<Contact>();
-            this.Children = new List<Keyword>();
+            this.ContactMethods = new ObservableCollection<ContactMethod>();
+            this.Contacts = new ObservableCollection<Contact>();
+            this.Children = new ObservableCollection<Keyword>();
         }
 
         public int Id { get; set; }

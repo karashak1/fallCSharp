@@ -34,10 +34,14 @@ namespace DataAccess.Migrations
                 new Keyword { Name = "Admin", Parent_Id = 2 }
             );
 
-            context.Contacts.AddOrUpdate(
-                new Contact { FirstName = "Mickey", LastName = "Duck", KeywordsId = 3 },
-                new Contact { FirstName = "Donald", LastName = "Mouse", KeywordsId = 3 }
-             );
+            for (int i = 0; i < 1000; i++) {
+                 context.Contacts.AddOrUpdate(
+                                new Contact { FirstName = "Mickey", LastName = "Duck", KeywordsId = 3 },
+                                new Contact { FirstName = "Donald", LastName = "Mouse", KeywordsId = 3 }
+                             );
+            }
+
+           
              
         }
     }

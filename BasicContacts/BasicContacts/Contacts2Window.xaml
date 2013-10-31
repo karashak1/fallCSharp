@@ -62,9 +62,11 @@
             
         </Grid>
         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Bottom">
-            <Button Margin="5" Padding="5">Add</Button>
-            <Button Margin="5" Padding="5">Delete</Button>
+            <Button Margin="5" Padding="5" Command="{Binding AddCommand}">Add</Button>
+            <Button Margin="5" Padding="5" Command="{Binding DeleteCommand}">Delete</Button>
             <Button Margin="5" Padding="5" Command="{Binding SaveCommand}">Save</Button>
+            <Button Margin="5" Padding="5" Command="{Binding AddEmailCommand}">Add Email</Button>
         </StackPanel>
+        <ProgressBar IsIndeterminate="True" Visibility="{Binding IsLoading}" VerticalAlignment="Center" Height="20" Margin="10"></ProgressBar>
     </Grid>
 </Window>

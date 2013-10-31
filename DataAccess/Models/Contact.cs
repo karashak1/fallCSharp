@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace DataAccess.Models
 {
@@ -7,8 +8,8 @@ namespace DataAccess.Models
     {
         public Contact()
         {
-            this.ContactMethods = new List<ContactMethod>();
-            this.Addresses= new List<Address>();
+            this.ContactMethods = new ObservableCollection<ContactMethod>();
+            this.Addresses= new ObservableCollection<Address>();
 
         }
 
