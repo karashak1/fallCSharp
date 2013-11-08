@@ -19,7 +19,7 @@ namespace BasicContacts {
         private Contact _CurrentContact;
         public Contact CurrentContact {
             get { return _CurrentContact; }
-            set { 
+            set {
                 _CurrentContact = value;
                 OnPropertyChanged();
                 LoadFacebook();
@@ -32,37 +32,37 @@ namespace BasicContacts {
             set { _Log = value; OnPropertyChanged(); }
         }
 
-        private FBUser _FBUser; 
+        private FBUser _FBUser;
 
         public FBUser FBUser {
             get { return _FBUser; }
             set { _FBUser = value; OnPropertyChanged(); }
         }
-        
+
 
         async void LoadFacebook() {
             if (CurrentContact == null) return;
             var client = new HttpClient {
                 BaseAddress = new Uri("http://graph.facebook.com/"),
-                DefaultRequestHeaders = { { "accept" , "application/json"} }
+                DefaultRequestHeaders = { { "accept", "application/json" } }
             };
             try {
-                var response = await client.GetAsync(CurrentContact.fbid + "?access_token="+access_token);
+                var response = await client.GetAsync(CurrentContact.fbid ); //+ "?access_token=" + access_token);
                 var fb = await response.Content.ReadAsAsync<FBUser>();
                 FBUser = fb;
                 Log = fb.about;
             }
             catch (Exception) {
             }
-            
+
         }
 
         private Boolean _IsLoading;
         public System.Windows.Visibility IsLoading {
-            get { return _IsLoading ? System.Windows.Visibility.Visible: System.Windows.Visibility.Hidden; }
+            get { return _IsLoading ? System.Windows.Visibility.Visible : System.Windows.Visibility.Hidden; }
             set { _IsLoading = value == System.Windows.Visibility.Visible; OnPropertyChanged(); }
         }
-        
+
         public ICommand SaveCommand { get; private set; }
         public ICommand AddCommand { get; private set; }
         public ICommand DeleteCommand { get; private set; }
@@ -74,8 +74,7 @@ namespace BasicContacts {
             _DB = new CSharpContext();
             Contacts = new ObservableCollection<Contact>();
             SaveCommand = new DelegateCommand(() => _DB.SaveChanges());
-            AddCommand = new DelegateCommand(() => 
-            {
+            AddCommand = new DelegateCommand(() => {
                 CurrentContact = new Contact();
                 Contacts.Add(CurrentContact);
                 _DB.Contacts.Add(CurrentContact);
@@ -104,7 +103,7 @@ namespace BasicContacts {
             _DB.Contacts.ToList();
             IsLoading = System.Windows.Visibility.Hidden;
         }
-        string access_token; //put the token here
+        string access_token = "CAAUWFySQTtMBANsGu7P1xxtX0iEtFHWfw3YHAWtoM26EBNNn7MZAwRQXFg65P3ZBZCh1ZA6Q2HIpZByhCsyT0DdO7PlS29J7DLJNFUSeQqfzvaCUwr2ZCMZA6pqBkseYxmRFXGmyiXUqMYVp4EeFEZBdK1Hs9VzceIZALoxKgYo9GWfNvoBCFAXtQUr1x8DC5TvgZD"; //put the token here
         void Login() {
             var w = new BrowserWindow();
             w.web1.Navigate("https://www.facebook.com/dialog/oauth?client_id=1431663537049299&redirect_uri=https://www.facebook.com/connect/login_success.html&response_type=token");
@@ -113,15 +112,42 @@ namespace BasicContacts {
         }
 
         void web1_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e) {
-            if (e.Uri.PathAndQuery == "connect/login_success.html") {
+            if (e.Uri.PathAndQuery == "/connect/login_success.html") {
                 var str = e.Uri.Fragment;
             }
         }
     }
 
-    public class FBUser {
-        public string  about { get; set; }
-        public string category{ get; set; }
-
+    
+    
+    public class FBUser{
+        public string about { get; set; }
+        public string category { get; set; }
+        public string description { get; set; }
+        public string directed_by { get; set; }
+        public string genre { get; set; }
+        public bool is_published { get; set; }
+        public string produced_by { get; set; }
+        public string release_date { get; set; }
+        public string screenplay_by { get; set; }
+        public string starring { get; set; }
+        public string studio { get; set; }
+        public int talking_about_count { get; set; }
+        public string username { get; set; }
+        public string website { get; set; }
+        public int were_here_count { get; set; }
+        public string id { get; set; }
+        public string name { get; set; }
+        public string link { get; set; }
+        public int likes { get; set; }
+        public Cover cover { get; set; }
     }
+
+    public class Cover{
+        public string cover_id { get; set; }
+        public string source { get; set; }
+        public int offset_y { get; set; }
+        public int offset_x { get; set; }
+    }
+
 }
