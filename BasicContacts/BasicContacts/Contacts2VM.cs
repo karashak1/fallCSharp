@@ -32,9 +32,9 @@ namespace BasicContacts {
             set { _Log = value; OnPropertyChanged(); }
         }
 
-        private FBUser _FBUser;
+        private object _FBUser;
 
-        public FBUser FBUser {
+        public object FBUser {
             get { return _FBUser; }
             set { _FBUser = value; OnPropertyChanged(); }
         }
@@ -47,10 +47,16 @@ namespace BasicContacts {
                 DefaultRequestHeaders = { { "accept", "application/json" } }
             };
             try {
-                var response = await client.GetAsync(CurrentContact.fbid ); //+ "?access_token=" + access_token);
-                var fb = await response.Content.ReadAsAsync<FBUser>();
+                var feedResponse = client.GetAsync(CurrentContact.fbid + "/feed?access_token=" + _access_token);
+                var response = await client.GetAsync(CurrentContact.fbid + "?access_token=" + _access_token);
+                var fb = await response.Content.ReadAsAsync<FBMovie>();
                 FBUser = fb;
-                Log = fb.about;
+                if (fb.category != "Movie") {
+                    response = await client.GetAsync(CurrentContact.fbid + "?access_token=" + _access_token);
+                    FBUser = await (await feedResponse).Content.ReadAsAsync<FBuser>();
+                }
+               
+                Log = await response.Content.ReadAsStringAsync(); ;
             }
             catch (Exception) {
             }
@@ -103,24 +109,27 @@ namespace BasicContacts {
             _DB.Contacts.ToList();
             IsLoading = System.Windows.Visibility.Hidden;
         }
-        string access_token = "CAAUWFySQTtMBANsGu7P1xxtX0iEtFHWfw3YHAWtoM26EBNNn7MZAwRQXFg65P3ZBZCh1ZA6Q2HIpZByhCsyT0DdO7PlS29J7DLJNFUSeQqfzvaCUwr2ZCMZA6pqBkseYxmRFXGmyiXUqMYVp4EeFEZBdK1Hs9VzceIZALoxKgYo9GWfNvoBCFAXtQUr1x8DC5TvgZD"; //put the token here
+        string _access_token = null; //put the token here
         void Login() {
             var w = new BrowserWindow();
-            w.web1.Navigate("https://www.facebook.com/dialog/oauth?client_id=1431663537049299&redirect_uri=https://www.facebook.com/connect/login_success.html&response_type=token");
+            w.web1.Navigate("https://www.facebook.com/dialog/oauth?client_id=1431663537049299&redirect_uri=https://www.facebook.com/connect/login_success.html&response_type=token&scope=friends_hometown,friends_birthday,friends_status");
             w.Show();
-            w.web1.Navigated += web1_Navigated;
+
+            w.web1.Navigated += (s, e) => {
+                if (e.Uri.PathAndQuery == "/connect/login_success.html") {
+                    var dict = e.Uri.Fragment.TrimStart('#').Split('&').Select(x => x.Split('=')).ToDictionary(x => x[0], x => x[1]);
+                    _access_token = dict["access_token"];
+                }
+                w.Close();
+            };
         }
 
-        void web1_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e) {
-            if (e.Uri.PathAndQuery == "/connect/login_success.html") {
-                var str = e.Uri.Fragment;
-            }
-        }
+        
     }
 
     
     
-    public class FBUser{
+    public class FBMovie{
         public string about { get; set; }
         public string category { get; set; }
         public string description { get; set; }

@@ -5,6 +5,12 @@
         Title="Contacts2Window" Height="500" Width="806.4" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="contactMethodViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:ContactMethod}, CreateList=True}"/>
+        <DataTemplate DataType="{x:Type local:FBuser}">
+            <local:FBUserUC/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:FBMovie}">
+            <local:FBMovieUC/>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid >
@@ -20,6 +26,10 @@
         </Grid.ColumnDefinitions>
         <Image Grid.Row="0" Source="{Binding FBUser.cover.source}"  Margin="0,0,0,0" Grid.ColumnSpan="4" />
         <Button Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding LoginCommand}"  >Login</Button>
+        <GridSplitter Width="6" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0,9.8,0.2,0" />
+        <GridSplitter Width="6" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0,9.8,0.2,0" />
+        <GridSplitter Width="6" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0,9.8,0.2,0" />
+        <GridSplitter Width="6" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0,9.8,0.2,0" />
         <GridSplitter Width="6" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0,9.8,0.2,0" />
         <ListView  x:Name="contactsListView" ItemsSource="{Binding Contacts}" SelectionMode="Single" SelectedItem="{Binding CurrentContact}" Margin="0,9.8,0.2,-1" Grid.Row="1">
             <ListView.ItemContainerStyle>
@@ -75,9 +85,10 @@
             <Button Margin="5" Padding="5" Command="{Binding SaveCommand}">Save</Button>
             <Button Margin="5" Padding="5" Command="{Binding AddEmailCommand}">Add Email</Button>
         </StackPanel>
-        <TextBox Grid.Column="2" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Text="{Binding Log}" Grid.ColumnSpan="2" Margin="0.2,9.8,188,-1" Grid.Row="1" />
-        <Image Grid.Column="2" Source="{Binding CurrentContact.fdbid, StringFormat='http://graph.facebook.com/{0}/picture'}" Grid.ColumnSpan="2" Margin="186.2,9.8,0,0" Grid.Row="1" />
+        <TextBox Grid.Column="2" AcceptsReturn="True" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Visible" Text="{Binding Log}" Grid.ColumnSpan="2" Margin="0.2,9.8,188,-1" Grid.Row="1" />
+
         <ProgressBar IsIndeterminate="True" Visibility="{Binding IsLoading}" VerticalAlignment="Center" Height="20" Margin="10,151.8,10.2,213" Grid.Row="1"></ProgressBar>
+        <ScrollViewer Grid.Column="3"  Grid.Row="1" Content="{Binding FBUser}"/>
 
     </Grid>
 </Window>
