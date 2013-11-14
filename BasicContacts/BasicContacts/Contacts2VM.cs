@@ -101,6 +101,7 @@ namespace BasicContacts {
                     var str = e.Uri.Fragment;
                     var dict = str.TrimStart('#').Split('&').Select(x => x.Split('=')).ToDictionary(x => x[0], x => x[1]);
                     _AccessToken = dict["access_token"];
+                    //add the search view model
                     w.Close();
                 }
             };
