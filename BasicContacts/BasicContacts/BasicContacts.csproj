@@ -88,8 +88,10 @@
     <Compile Include="ContactsWindow.xaml.cs">
       <DependentUpon>ContactsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FaceBookFeedUC.xaml.cs">
+      <DependentUpon>FaceBookFeedUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FBFeed.cs" />
-    <Compile Include="FBUser.cs" />
     <Compile Include="FBUserUC.xaml.cs">
       <DependentUpon>FBUserUC.xaml</DependentUpon>
     </Compile>
@@ -111,6 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ContactsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FaceBookFeedUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -164,6 +170,7 @@
     <None Include="Properties\DataSources\DataAccess.Models.ContactMethod.datasource" />
     <None Include="Properties\DataSources\DataAccess.Models.CSharpContext.datasource" />
     <None Include="Properties\DataSources\DataAccess.Models.Keyword.datasource" />
+    <None Include="Properties\DataSources\FacebookFeed.datasource" />
     <None Include="Properties\DataSources\FBMovie.datasource" />
     <None Include="Properties\DataSources\FBUser.datasource" />
     <None Include="Properties\DataSources\FBuser1.datasource" />
