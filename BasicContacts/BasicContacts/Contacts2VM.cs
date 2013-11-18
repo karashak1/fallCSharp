@@ -17,6 +17,7 @@ namespace BasicContacts {
 
         public Contacts2VM() {
             int i = 0;
+            /*
             _DB = new CSharpContext();
             Contacts = new ObservableCollection<Contact>();
             SaveCommand = new DelegateCommand(() => _DB.SaveChanges());
@@ -34,15 +35,21 @@ namespace BasicContacts {
                 Contacts.Remove(CurrentContact);
             });
             LoginCommand = new DelegateCommand(LoginFB);
-
+            */
 
             Init();
         }
 
         async void Init() {
             IsLoading = System.Windows.Visibility.Visible;
-            var temp = _DB.Contacts;
-            var contacts = await temp.ToListAsync();
+            //var temp = _DB.Contacts;
+            var Client = new HttpClient {
+                BaseAddress = new Uri("http://localhost:49839/Api"),
+                DefaultRequestHeaders= {{"accept","application/json"}}
+            };
+            var temp = await Client.GetAsync("Contacts");
+            //var contacts = await Task.Run(() => temp.ToList());
+            var contacts = await temp.Content.ReadAsAsync<IEnumerable<Contact>>();
             foreach (var item in contacts) {
                 Contacts.Add(item);
             }
