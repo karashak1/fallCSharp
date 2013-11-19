@@ -18,6 +18,7 @@ namespace WebAPI.Controllers
 
         public ContactsController() {
             db.Configuration.ProxyCreationEnabled = false;
+            db.Configuration.LazyLoadingEnabled = false;
         }
 
         // GET api/Contacts

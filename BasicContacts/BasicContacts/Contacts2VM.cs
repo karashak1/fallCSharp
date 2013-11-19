@@ -17,6 +17,7 @@ namespace BasicContacts {
 
         public Contacts2VM() {
             int i = 0;
+            Contacts = new ObservableCollection<Contact>();
             /*
             _DB = new CSharpContext();
             Contacts = new ObservableCollection<Contact>();
@@ -43,12 +44,13 @@ namespace BasicContacts {
         async void Init() {
             IsLoading = System.Windows.Visibility.Visible;
             //var temp = _DB.Contacts;
-            var Client = new HttpClient {
-                BaseAddress = new Uri("http://localhost:49839/Api"),
-                DefaultRequestHeaders= {{"accept","application/json"}}
+            var client = new HttpClient {
+                BaseAddress = new Uri("http://localhost:49839/api/"),
+                DefaultRequestHeaders= {{"accept","application/xml"}}
             };
-            var temp = await Client.GetAsync("Contacts");
+            var temp = await client.GetAsync("Contacts");
             //var contacts = await Task.Run(() => temp.ToList());
+            Log = await temp.Content.ReadAsStringAsync();
             var contacts = await temp.Content.ReadAsAsync<IEnumerable<Contact>>();
             foreach (var item in contacts) {
                 Contacts.Add(item);
