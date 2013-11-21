@@ -4,15 +4,15 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccess.Models;
 using System.Data.Entity;
 using System.Windows.Input;
-using DataAccess;
 using System.Net.Http;
+using DataAccess;
+using BasicContacts.ContactsSoap;
 
 namespace BasicContacts {
     public class Contacts2VM : BaseVM {
-        CSharpContext _DB;
+        //CSharpContext _DB;
         string _AccessToken;
 
         public Contacts2VM() {
@@ -44,17 +44,21 @@ namespace BasicContacts {
         async void Init() {
             IsLoading = System.Windows.Visibility.Visible;
             //var temp = _DB.Contacts;
-            var client = new HttpClient {
+            var soapClient = new ContactsSoap.ContactsSoapClient();
+            /*var client = new HttpClient {
                 BaseAddress = new Uri("http://localhost:49839/api/"),
                 DefaultRequestHeaders= {{"accept","application/xml"}}
             };
             var temp = await client.GetAsync("Contacts");
-            //var contacts = await Task.Run(() => temp.ToList());
-            Log = await temp.Content.ReadAsStringAsync();
-            var contacts = await temp.Content.ReadAsAsync<IEnumerable<Contact>>();
+            //var contacts = await Task.Run(() => temp.ToList());*/
+            var temp = await soapClient.GetContactsAsync(0);
+            //Log = await temp.Content.ReadAsStringAsync();
+            var contacts = temp;
             foreach (var item in contacts) {
                 Contacts.Add(item);
             }
+            
+            Log = await soapClient.DoWorkAsync();
             IsLoading = System.Windows.Visibility.Hidden;
 
         }

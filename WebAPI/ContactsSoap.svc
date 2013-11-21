@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WebAPI.ContactsSoap" CodeBehind="ContactsSoap.svc.cs" %>
