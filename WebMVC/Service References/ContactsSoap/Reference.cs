@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BasicContacts.ContactsSoap {
+namespace WebMVC.ContactsSoap {
     using System.Runtime.Serialization;
     using System;
     
@@ -23,10 +23,10 @@ namespace BasicContacts.ContactsSoap {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private BasicContacts.ContactsSoap.Address[] AddressesField;
+        private WebMVC.ContactsSoap.Address[] AddressesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private BasicContacts.ContactsSoap.ContactMethod[] ContactMethodsField;
+        private WebMVC.ContactsSoap.ContactMethod[] ContactMethodsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FirstNameField;
@@ -35,7 +35,7 @@ namespace BasicContacts.ContactsSoap {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private BasicContacts.ContactsSoap.Keyword KeywordField;
+        private WebMVC.ContactsSoap.Keyword KeywordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int KeywordsIdField;
@@ -57,7 +57,7 @@ namespace BasicContacts.ContactsSoap {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public BasicContacts.ContactsSoap.Address[] Addresses {
+        public WebMVC.ContactsSoap.Address[] Addresses {
             get {
                 return this.AddressesField;
             }
@@ -70,7 +70,7 @@ namespace BasicContacts.ContactsSoap {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public BasicContacts.ContactsSoap.ContactMethod[] ContactMethods {
+        public WebMVC.ContactsSoap.ContactMethod[] ContactMethods {
             get {
                 return this.ContactMethodsField;
             }
@@ -109,7 +109,7 @@ namespace BasicContacts.ContactsSoap {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public BasicContacts.ContactsSoap.Keyword Keyword {
+        public WebMVC.ContactsSoap.Keyword Keyword {
             get {
                 return this.KeywordField;
             }
@@ -180,13 +180,13 @@ namespace BasicContacts.ContactsSoap {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private BasicContacts.ContactsSoap.Keyword[] ChildrenField;
+        private WebMVC.ContactsSoap.Keyword[] ChildrenField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private BasicContacts.ContactsSoap.ContactMethod[] ContactMethodsField;
+        private WebMVC.ContactsSoap.ContactMethod[] ContactMethodsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private BasicContacts.ContactsSoap.Contact[] ContactsField;
+        private WebMVC.ContactsSoap.Contact[] ContactsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
@@ -195,7 +195,7 @@ namespace BasicContacts.ContactsSoap {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private BasicContacts.ContactsSoap.Keyword ParentField;
+        private WebMVC.ContactsSoap.Keyword ParentField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int Parent_IdField;
@@ -211,7 +211,7 @@ namespace BasicContacts.ContactsSoap {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public BasicContacts.ContactsSoap.Keyword[] Children {
+        public WebMVC.ContactsSoap.Keyword[] Children {
             get {
                 return this.ChildrenField;
             }
@@ -224,7 +224,7 @@ namespace BasicContacts.ContactsSoap {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public BasicContacts.ContactsSoap.ContactMethod[] ContactMethods {
+        public WebMVC.ContactsSoap.ContactMethod[] ContactMethods {
             get {
                 return this.ContactMethodsField;
             }
@@ -237,7 +237,7 @@ namespace BasicContacts.ContactsSoap {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public BasicContacts.ContactsSoap.Contact[] Contacts {
+        public WebMVC.ContactsSoap.Contact[] Contacts {
             get {
                 return this.ContactsField;
             }
@@ -276,7 +276,7 @@ namespace BasicContacts.ContactsSoap {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public BasicContacts.ContactsSoap.Keyword Parent {
+        public WebMVC.ContactsSoap.Keyword Parent {
             get {
                 return this.ParentField;
             }
@@ -324,7 +324,7 @@ namespace BasicContacts.ContactsSoap {
         private string CityField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private BasicContacts.ContactsSoap.Contact ContactField;
+        private WebMVC.ContactsSoap.Contact ContactField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ContactIdField;
@@ -365,7 +365,7 @@ namespace BasicContacts.ContactsSoap {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public BasicContacts.ContactsSoap.Contact Contact {
+        public WebMVC.ContactsSoap.Contact Contact {
             get {
                 return this.ContactField;
             }
@@ -462,7 +462,7 @@ namespace BasicContacts.ContactsSoap {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private BasicContacts.ContactsSoap.Contact ContactField;
+        private WebMVC.ContactsSoap.Contact ContactField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ContactIdField;
@@ -471,7 +471,7 @@ namespace BasicContacts.ContactsSoap {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private BasicContacts.ContactsSoap.Keyword KeywordField;
+        private WebMVC.ContactsSoap.Keyword KeywordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int KeywordIDField;
@@ -490,7 +490,7 @@ namespace BasicContacts.ContactsSoap {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public BasicContacts.ContactsSoap.Contact Contact {
+        public WebMVC.ContactsSoap.Contact Contact {
             get {
                 return this.ContactField;
             }
@@ -529,7 +529,7 @@ namespace BasicContacts.ContactsSoap {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public BasicContacts.ContactsSoap.Keyword Keyword {
+        public WebMVC.ContactsSoap.Keyword Keyword {
             get {
                 return this.KeywordField;
             }
@@ -588,19 +588,19 @@ namespace BasicContacts.ContactsSoap {
         System.Threading.Tasks.Task<string> DoWorkAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContactsSoap/GetContacts", ReplyAction="http://tempuri.org/IContactsSoap/GetContactsResponse")]
-        BasicContacts.ContactsSoap.Contact[] GetContacts(int page);
+        WebMVC.ContactsSoap.Contact[] GetContacts(int page);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContactsSoap/GetContacts", ReplyAction="http://tempuri.org/IContactsSoap/GetContactsResponse")]
-        System.Threading.Tasks.Task<BasicContacts.ContactsSoap.Contact[]> GetContactsAsync(int page);
+        System.Threading.Tasks.Task<WebMVC.ContactsSoap.Contact[]> GetContactsAsync(int page);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IContactsSoapChannel : BasicContacts.ContactsSoap.IContactsSoap, System.ServiceModel.IClientChannel {
+    public interface IContactsSoapChannel : WebMVC.ContactsSoap.IContactsSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ContactsSoapClient : System.ServiceModel.ClientBase<BasicContacts.ContactsSoap.IContactsSoap>, BasicContacts.ContactsSoap.IContactsSoap {
+    public partial class ContactsSoapClient : System.ServiceModel.ClientBase<WebMVC.ContactsSoap.IContactsSoap>, WebMVC.ContactsSoap.IContactsSoap {
         
         public ContactsSoapClient() {
         }
@@ -629,11 +629,11 @@ namespace BasicContacts.ContactsSoap {
             return base.Channel.DoWorkAsync();
         }
         
-        public BasicContacts.ContactsSoap.Contact[] GetContacts(int page) {
+        public WebMVC.ContactsSoap.Contact[] GetContacts(int page) {
             return base.Channel.GetContacts(page);
         }
         
-        public System.Threading.Tasks.Task<BasicContacts.ContactsSoap.Contact[]> GetContactsAsync(int page) {
+        public System.Threading.Tasks.Task<WebMVC.ContactsSoap.Contact[]> GetContactsAsync(int page) {
             return base.Channel.GetContactsAsync(page);
         }
     }

@@ -186,6 +186,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\ContactsSoap\BasicContacts.ContactsSoap.Contact.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ContactsSoap\ContactsSoap.wsdl" />
     <None Include="Service References\ContactsSoap\ContactsSoap.xsd">
       <SubType>Designer</SubType>
@@ -222,12 +225,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\DataAccess\DataAccess.csproj">
-      <Project>{dcc74c5b-11d0-49f2-b49f-16806408b064}</Project>
-      <Name>DataAccess</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

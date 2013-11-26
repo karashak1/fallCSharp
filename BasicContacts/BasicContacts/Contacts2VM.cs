@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Windows.Input;
 using System.Net.Http;
-using DataAccess;
+//using DataAccess;
 using BasicContacts.ContactsSoap;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace BasicContacts {
     public class Contacts2VM : BaseVM {
@@ -51,9 +53,9 @@ namespace BasicContacts {
             };
             var temp = await client.GetAsync("Contacts");
             //var contacts = await Task.Run(() => temp.ToList());*/
-            var temp = await soapClient.GetContactsAsync(0);
+            IEnumerable<Contact> temp = await soapClient.GetContactsAsync(0);
             //Log = await temp.Content.ReadAsStringAsync();
-            var contacts = temp;
+            IEnumerable<Contact> contacts = temp;
             foreach (var item in contacts) {
                 Contacts.Add(item);
             }
@@ -245,6 +247,46 @@ namespace BasicContacts {
         public string id { get; set; }
         public string name { get; set; }
 
+    }
+
+    public class BaseVM : INotifyPropertyChanged {
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string propertyName = null) {
+
+            if (PropertyChanged != null) {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+    public class DelegateCommand : ICommand {
+
+        private Action _Action;
+        private Func<bool> _CanExecute;
+
+        public DelegateCommand(Action action, Func<bool> canExecute = null) {
+            _Action = action;
+            _CanExecute = canExecute;
+        }
+
+        public bool CanExecute(object parameter) {
+            //throw new NotImplementedException();
+            if (_CanExecute == null)
+                return true;
+            else
+                return _CanExecute();
+        }
+
+        public event EventHandler CanExecuteChanged;
+        public void OnCanExecuteChanged() {
+            if (CanExecuteChanged != null)
+                CanExecuteChanged(this, new EventArgs());
+        }
+
+        public void Execute(object parameter) {
+            //throw new NotImplementedException();
+            _Action();
+        }
     }
 
 }

@@ -17,6 +17,8 @@ namespace WebAPI {
         
         public IEnumerable<Contact> GetContacts(int page) {
             var db = new CSharpContext();
+            db.Configuration.ProxyCreationEnabled = false;
+            db.Configuration.LazyLoadingEnabled = false;
             return db.Contacts.OrderBy(x=> x.LastName).Skip(page).Take(10).ToList();
         }
     }
