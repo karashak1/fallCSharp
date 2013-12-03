@@ -19,6 +19,7 @@ namespace BasicContacts {
 
         public Contacts2VM() {
             int i = 0;
+            i++;
             Contacts = new ObservableCollection<Contact>();
             /*
             _DB = new CSharpContext();

@@ -72,7 +72,7 @@ namespace BasicContacts {
 
 
         async void Search(string searchTerm) {
-            HttpResponseMessage response;
+            HttpResponseMessage response= null;
             if (searchTerm == null) return;
             try {
                 if (SearchType == BasicContacts.SearchType.Everyone) {

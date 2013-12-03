@@ -120,6 +120,10 @@ namespace BasicContacts {
         public string id { get; set; }
     }
 
+    public class FBEndPoint : FBItem {
+        public string category { get; set; }
+        public FBItem[] category_list { get; set; }
+    }
     public class To {
         public Datum3[] data { get; set; }
     }
