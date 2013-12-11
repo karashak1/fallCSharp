@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalDataLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,9 @@ namespace CSharpFinal {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+            var db = new ContactsContext();
+           
+            db.SaveChanges();
         }
     }
 }

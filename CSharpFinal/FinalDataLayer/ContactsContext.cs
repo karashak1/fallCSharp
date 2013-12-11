@@ -16,18 +16,26 @@ namespace FinalDataLayer
         public string Zip { get; set; }
     }
 
-    public class Company {
-        public int Id { get; set; }
+    public class Company: BaseContact {
+        //public int Id { get; set; }
         public string Name { get; set; }
-        public Address Address { get; set; }
+        //public Address Address { get; set; }
+        public virtual ICollection<ContactMethod> ContactMethods { get; set; }
         public virtual ICollection<Contact> Employees { get; set; }
     }
 
-    public class Contact {
+    public class BaseContact {
         public int Id { get; set; }
-        public string Name { get; set; }
         public int AddressID { get; set; }
         public virtual Address Address { get; set; }
+    }
+
+    public class Contact: BaseContact {
+        //public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        //public int AddressID { get; set; }
+        //public virtual Address Address { get; set; }
         public int CompanyId { get; set; }
         public virtual Company Company { get; set; }
         public virtual ICollection<ContactMethod> ContactMethods { get; set; }
@@ -43,8 +51,8 @@ namespace FinalDataLayer
     }
 
     public class ContactsContext : DbContext {
-
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<BaseContact> Base { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<ContactMethod> ContactMethods { get; set; }
