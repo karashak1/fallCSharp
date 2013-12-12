@@ -92,6 +92,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\FinalDataLayer.Address.datasource" />
+    <None Include="Properties\DataSources\FinalDataLayer.BaseContact.datasource" />
+    <None Include="Properties\DataSources\FinalDataLayer.Company.datasource" />
+    <None Include="Properties\DataSources\FinalDataLayer.Contact.datasource" />
+    <None Include="Properties\DataSources\FinalDataLayer.ContactMethod.datasource" />
+    <None Include="Properties\DataSources\FinalDataLayer.ContactsContext.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -100,12 +106,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FinalDataLayer\FinalDataLayer.csproj">
-      <Project>{7745c403-c503-49e4-ab41-bfd87a1ed668}</Project>
-      <Name>FinalDataLayer</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

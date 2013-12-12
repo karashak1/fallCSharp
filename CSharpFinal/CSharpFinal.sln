@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpFinal", "CSharpFinal\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalDataLayer", "FinalDataLayer\FinalDataLayer.csproj", "{7745C403-C503-49E4-AB41-BFD87A1ED668}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoapServer", "SoapServer\SoapServer.csproj", "{BD643AC4-8715-4253-83A3-8A882E979812}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7745C403-C503-49E4-AB41-BFD87A1ED668}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7745C403-C503-49E4-AB41-BFD87A1ED668}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7745C403-C503-49E4-AB41-BFD87A1ED668}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD643AC4-8715-4253-83A3-8A882E979812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD643AC4-8715-4253-83A3-8A882E979812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD643AC4-8715-4253-83A3-8A882E979812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD643AC4-8715-4253-83A3-8A882E979812}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
