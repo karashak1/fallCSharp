@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Entity;
 
-namespace FinalDataLayer
+namespace DataAccess
 {
-
     public class Address {
         public int Id { get; set; }
         public string Street { get; set; }
@@ -16,30 +15,22 @@ namespace FinalDataLayer
         public string Zip { get; set; }
     }
 
-    public class Company: BaseContact {
-        //public int Id { get; set; }
-        public string Name { get; set; }
-        //public Address Address { get; set; }
-        public virtual ICollection<ContactMethod> ContactMethods { get; set; }
-        public virtual ICollection<Contact> Employees { get; set; }
-    }
 
-    public class BaseContact {
+    public class Contact {
         public int Id { get; set; }
-        public int AddressID { get; set; }
-        public virtual Address Address { get; set; }
-    }
-
-    public class Contact: BaseContact {
-        //public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        //public int AddressID { get; set; }
-        //public virtual Address Address { get; set; }
-        public int CompanyId { get; set; }
-        public virtual Company Company { get; set; }
+        public int AddressID { get; set; }
+        public virtual Address Address { get; set; }
         public virtual ICollection<ContactMethod> ContactMethods { get; set; }
-        //public  MyProperty { get; set; }
+    }
+
+    public class Company {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int  AddressID { get; set; }
+        public virtual Address Address { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
     public class ContactMethod {
@@ -52,7 +43,6 @@ namespace FinalDataLayer
 
     public class ContactsContext : DbContext {
         public DbSet<Address> Addresses { get; set; }
-        public DbSet<BaseContact> Base { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<ContactMethod> ContactMethods { get; set; }
