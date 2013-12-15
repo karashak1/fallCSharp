@@ -95,9 +95,13 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DataAccess.Address.datasource" />
+    <None Include="Properties\DataSources\DataAccess.Company.datasource" />
     <None Include="Properties\DataSources\DataAccess.Contact.datasource" />
     <None Include="Properties\DataSources\DataAccess.ContactMethod.datasource" />
     <None Include="Properties\DataSources\DataAccess.ContactsContext.datasource" />
+    <None Include="Properties\DataSources\DataAccess.Migrations.Company.datasource" />
+    <None Include="Properties\DataSources\DataAccess.Migrations.Company2.datasource" />
+    <None Include="Properties\DataSources\DataAccess.Migrations.InitialCreate.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
