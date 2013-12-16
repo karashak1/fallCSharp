@@ -44,6 +44,18 @@ namespace CSharpFinal.SoapService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISoapService/GetContactMethods", ReplyAction="http://tempuri.org/ISoapService/GetContactMethodsResponse")]
         System.Threading.Tasks.Task<DataAccess.ContactMethod[]> GetContactMethodsAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISoapService/AddContact", ReplyAction="http://tempuri.org/ISoapService/AddContactResponse")]
+        void AddContact(DataAccess.Contact contact);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISoapService/AddContact", ReplyAction="http://tempuri.org/ISoapService/AddContactResponse")]
+        System.Threading.Tasks.Task AddContactAsync(DataAccess.Contact contact);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISoapService/Save", ReplyAction="http://tempuri.org/ISoapService/SaveResponse")]
+        void Save();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISoapService/Save", ReplyAction="http://tempuri.org/ISoapService/SaveResponse")]
+        System.Threading.Tasks.Task SaveAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -111,6 +123,22 @@ namespace CSharpFinal.SoapService {
         
         public System.Threading.Tasks.Task<DataAccess.ContactMethod[]> GetContactMethodsAsync(int id) {
             return base.Channel.GetContactMethodsAsync(id);
+        }
+        
+        public void AddContact(DataAccess.Contact contact) {
+            base.Channel.AddContact(contact);
+        }
+        
+        public System.Threading.Tasks.Task AddContactAsync(DataAccess.Contact contact) {
+            return base.Channel.AddContactAsync(contact);
+        }
+        
+        public void Save() {
+            base.Channel.Save();
+        }
+        
+        public System.Threading.Tasks.Task SaveAsync() {
+            return base.Channel.SaveAsync();
         }
     }
 }

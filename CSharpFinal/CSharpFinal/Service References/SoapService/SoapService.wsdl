@@ -37,6 +37,18 @@
   <wsdl:message name="ISoapService_GetContactMethods_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetContactMethodsResponse" />
   </wsdl:message>
+  <wsdl:message name="ISoapService_AddContact_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddContact" />
+  </wsdl:message>
+  <wsdl:message name="ISoapService_AddContact_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISoapService_Save_InputMessage">
+    <wsdl:part name="parameters" element="tns:Save" />
+  </wsdl:message>
+  <wsdl:message name="ISoapService_Save_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISoapService">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/ISoapService/DoWork" message="tns:ISoapService_DoWork_InputMessage" />
@@ -57,6 +69,14 @@
     <wsdl:operation name="GetContactMethods">
       <wsdl:input wsaw:Action="http://tempuri.org/ISoapService/GetContactMethods" message="tns:ISoapService_GetContactMethods_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISoapService/GetContactMethodsResponse" message="tns:ISoapService_GetContactMethods_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddContact">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISoapService/AddContact" message="tns:ISoapService_AddContact_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISoapService/AddContactResponse" message="tns:ISoapService_AddContact_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISoapService/Save" message="tns:ISoapService_Save_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISoapService/SaveResponse" message="tns:ISoapService_Save_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISoapService" type="tns:ISoapService">
@@ -99,6 +119,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetContactMethods">
       <soap:operation soapAction="http://tempuri.org/ISoapService/GetContactMethods" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddContact">
+      <soap:operation soapAction="http://tempuri.org/ISoapService/AddContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <soap:operation soapAction="http://tempuri.org/ISoapService/Save" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -1,6 +1,7 @@
 ﻿using DataAccess;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -24,6 +25,9 @@ namespace SoapServer {
 
         [OperationContract]
         IEnumerable<ContactMethod> GetContactMethods(int id);
+
+        [OperationContract]
+        void AddContact(Contact contact);
 
         [OperationContract]
         void Save();

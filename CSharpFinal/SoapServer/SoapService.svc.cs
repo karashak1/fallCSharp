@@ -49,6 +49,11 @@ namespace SoapServer {
             return methods.ToList();
         }
 
+        public void AddContact(Contact contact) {
+                db.Contacts.Add(contact);
+        }
+
+
         public void Save() {
             db.SaveChanges();
         }

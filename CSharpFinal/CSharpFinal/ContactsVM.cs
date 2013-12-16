@@ -64,11 +64,28 @@ namespace CSharpFinal {
             Addresses = new ObservableCollection<Address>();
             Companies = new ObservableCollection<Company>();
             AddressIDs = new ObservableCollection<int>();
-            SaveCommand = new DelegateCommand(() => _DB.SaveChanges());
+            /* Old save command
+            SaveCommand = new DelegateCommand(() => {
+                _DB.SaveChanges();
+            });
+             */
+            SaveCommand = new DelegateCommand(() => {
+                foreach (var x in Contacts) {
+                    soapClient.AddContact(x);
+                }
+                soapClient.Save();
+            });
+            /*old Add Contact
             AddContactCommand = new DelegateCommand(() => {
                 ViewingContact = new Contact();
                 Contacts.Add(ViewingContact);
-                _DB.Contacts.Add(ViewingContact);
+                _DB.Contacts.Add(VewingContact);
+            });
+             */
+            AddContactCommand = new DelegateCommand(() => {
+                ViewingContact = new Contact();
+                Contacts.Add(ViewingContact);
+                //soapClient.AddContactAsync(ViewingContact);
             });
             AddCompanyCommand = new DelegateCommand(() => {
                 ViewingCompany = new Company();
@@ -106,6 +123,7 @@ namespace CSharpFinal {
         }
 
         private void LoadContacts() {
+            //IEnumerable<Contact> temp = _DB.Contacts.ToList();
             IEnumerable<Contact> temp = soapClient.GetContacts();
             foreach (var x in temp) {
                 var methods = soapClient.GetContactMethods(x.Id);
@@ -115,6 +133,7 @@ namespace CSharpFinal {
         }
 
         private void LoadAddresses() {
+            //IEnumerable<Address> temp = _DB.Addresses.ToList();
             IEnumerable<Address> temp = soapClient.GetAddresses();
             foreach (var x in temp) {
                 AddressIDs.Add(x.Id);
@@ -123,6 +142,7 @@ namespace CSharpFinal {
         }
 
         private void LoadCompanies() {
+            //IEnumerable<Company> temp = _DB.Companies.ToList();
             IEnumerable<Company> temp = soapClient.GetCompanies();
             foreach (var x in temp) {
                 Companies.Add(x);
