@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -10,6 +11,21 @@ namespace SoapServer {
     [ServiceContract]
     public interface ISoapService {
         [OperationContract]
-        void DoWork();
+        string DoWork();
+
+        [OperationContract]
+        IEnumerable<Contact> GetContacts();
+
+        [OperationContract]
+        IEnumerable<Company> GetCompanies();
+
+        [OperationContract]
+        IEnumerable<Address> GetAddresses();
+
+        [OperationContract]
+        IEnumerable<ContactMethod> GetContactMethods(int id);
+
+        [OperationContract]
+        void Save();
     }
 }

@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using DataAccess;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using CSharpFinal.SoapService;
 
 namespace CSharpFinal {
     public class ContactsVM : BaseVM{
         ContactsContext _DB;
+        SoapServiceClient soapClient; 
 
         ObservableCollection<int> AddressIDs { get; set; }
 
@@ -57,6 +59,7 @@ namespace CSharpFinal {
 
         public ContactsVM() {
             _DB = new ContactsContext();
+            soapClient = new SoapService.SoapServiceClient();
             Contacts = new ObservableCollection<Contact>();
             Addresses = new ObservableCollection<Address>();
             Companies = new ObservableCollection<Company>();
@@ -103,14 +106,16 @@ namespace CSharpFinal {
         }
 
         private void LoadContacts() {
-            IEnumerable<Contact> temp = _DB.Contacts.ToList();
+            IEnumerable<Contact> temp = soapClient.GetContacts();
             foreach (var x in temp) {
+                var methods = soapClient.GetContactMethods(x.Id);
+                x.ContactMethods = methods.ToList();
                 Contacts.Add(x);
             }
         }
 
         private void LoadAddresses() {
-            IEnumerable<Address> temp = _DB.Addresses.ToList();
+            IEnumerable<Address> temp = soapClient.GetAddresses();
             foreach (var x in temp) {
                 AddressIDs.Add(x.Id);
                 Addresses.Add(x);
@@ -118,7 +123,7 @@ namespace CSharpFinal {
         }
 
         private void LoadCompanies() {
-            IEnumerable<Company> temp = _DB.Companies.ToList();
+            IEnumerable<Company> temp = soapClient.GetCompanies();
             foreach (var x in temp) {
                 Companies.Add(x);
             }

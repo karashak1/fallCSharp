@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{93E267AB-3659-4F23-AAD6-163EE3528390}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpFinal", "CSharpFinal\CSharpFinal.csproj", "{51403BEA-774D-4987-A74C-64B1E17923EE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{467D4E94-D841-4EBF-ABAC-E57BE8A04EDB} = {467D4E94-D841-4EBF-ABAC-E57BE8A04EDB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoapServer", "SoapServer\SoapServer.csproj", "{467D4E94-D841-4EBF-ABAC-E57BE8A04EDB}"
 EndProject
