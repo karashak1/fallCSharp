@@ -11,6 +11,8 @@ namespace CSharpFinal {
     public class ContactsVM : BaseVM{
         ContactsContext _DB;
 
+        ObservableCollection<int> AddressIDs { get; set; }
+
         public ObservableCollection<Address> Addresses { get; private set; }
         private Address _ViewingAddress;
         public Address ViewingAddress {
@@ -58,6 +60,7 @@ namespace CSharpFinal {
             Contacts = new ObservableCollection<Contact>();
             Addresses = new ObservableCollection<Address>();
             Companies = new ObservableCollection<Company>();
+            AddressIDs = new ObservableCollection<int>();
             SaveCommand = new DelegateCommand(() => _DB.SaveChanges());
             AddContactCommand = new DelegateCommand(() => {
                 ViewingContact = new Contact();
@@ -109,6 +112,7 @@ namespace CSharpFinal {
         private void LoadAddresses() {
             IEnumerable<Address> temp = _DB.Addresses.ToList();
             foreach (var x in temp) {
+                AddressIDs.Add(x.Id);
                 Addresses.Add(x);
             }
         }

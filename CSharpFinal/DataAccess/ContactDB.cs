@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,10 @@ namespace DataAccess
         public int AddressID { get; set; }
         public virtual Address Address { get; set; }
         public virtual ICollection<ContactMethod> ContactMethods { get; set; }
+
+        public Contact() {
+            this.ContactMethods = new ObservableCollection<ContactMethod>();
+        }
     }
 
     public class Company {

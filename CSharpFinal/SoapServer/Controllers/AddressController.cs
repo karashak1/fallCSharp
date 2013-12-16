@@ -10,112 +10,107 @@ using DataAccess;
 
 namespace SoapServer.Controllers
 {
-    public class ContactsController : Controller
+    public class AddressController : Controller
     {
         private ContactsContext db = new ContactsContext();
 
-        // GET: /Contacts/
+        // GET: /Default1/
         public ActionResult Index()
         {
-            var contacts = db.Contacts;
-            return View(contacts.ToList());
+            return View(db.Addresses.ToList());
         }
 
-        // GET: /Contacts/Details/5
+        // GET: /Default1/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = db.Contacts.Find(id);
-            if (contact == null)
+            Address address = db.Addresses.Find(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            return View(address);
         }
 
-        // GET: /Contacts/Create
+        // GET: /Default1/Create
         public ActionResult Create()
         {
-            ViewBag.AddressID = new SelectList(db.Addresses, "Id", "Street");
             return View();
         }
 
-        // POST: /Contacts/Create
+        // POST: /Default1/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,FirstName,LastName,AddressID")] Contact contact)
+        public ActionResult Create([Bind(Include="Id,Street,City,State,Zip")] Address address)
         {
             if (ModelState.IsValid)
             {
-                db.Contacts.Add(contact);
+                db.Addresses.Add(address);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AddressID = new SelectList(db.Addresses, "Id", "Street", contact.AddressID);
-            return View(contact);
+            return View(address);
         }
 
-        // GET: /Contacts/Edit/5
+        // GET: /Default1/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = db.Contacts.Find(id);
-            if (contact == null)
+            Address address = db.Addresses.Find(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AddressID = new SelectList(db.Addresses, "Id", "Street", contact.AddressID);
-            return View(contact);
+            return View(address);
         }
 
-        // POST: /Contacts/Edit/5
+        // POST: /Default1/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,FirstName,LastName,AddressID")] Contact contact)
+        public ActionResult Edit([Bind(Include="Id,Street,City,State,Zip")] Address address)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(contact).State = EntityState.Modified;
+                db.Entry(address).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AddressID = new SelectList(db.Addresses, "Id", "Street", contact.AddressID);
-            return View(contact);
+            return View(address);
         }
 
-        // GET: /Contacts/Delete/5
+        // GET: /Default1/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = db.Contacts.Find(id);
-            if (contact == null)
+            Address address = db.Addresses.Find(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            return View(address);
         }
 
-        // POST: /Contacts/Delete/5
+        // POST: /Default1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Contact contact = db.Contacts.Find(id);
-            db.Contacts.Remove(contact);
+            Address address = db.Addresses.Find(id);
+            db.Addresses.Remove(address);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
