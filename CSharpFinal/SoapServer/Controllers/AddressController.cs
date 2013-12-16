@@ -14,13 +14,13 @@ namespace SoapServer.Controllers
     {
         private ContactsContext db = new ContactsContext();
 
-        // GET: /Default1/
+        // GET: /Address/
         public ActionResult Index()
         {
             return View(db.Addresses.ToList());
         }
 
-        // GET: /Default1/Details/5
+        // GET: /Address/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,13 +35,13 @@ namespace SoapServer.Controllers
             return View(address);
         }
 
-        // GET: /Default1/Create
+        // GET: /Address/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: /Default1/Create
+        // POST: /Address/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -58,7 +58,7 @@ namespace SoapServer.Controllers
             return View(address);
         }
 
-        // GET: /Default1/Edit/5
+        // GET: /Address/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,7 +73,7 @@ namespace SoapServer.Controllers
             return View(address);
         }
 
-        // POST: /Default1/Edit/5
+        // POST: /Address/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -89,7 +89,7 @@ namespace SoapServer.Controllers
             return View(address);
         }
 
-        // GET: /Default1/Delete/5
+        // GET: /Address/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +104,7 @@ namespace SoapServer.Controllers
             return View(address);
         }
 
-        // POST: /Default1/Delete/5
+        // POST: /Address/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
