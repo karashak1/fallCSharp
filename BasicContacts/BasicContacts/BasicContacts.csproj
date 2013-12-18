@@ -207,6 +207,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BasicContacts.BingServiceReference.Bing.BingSearchContainer.datasource" />
     <None Include="Properties\DataSources\Contacts2VM.datasource" />
     <None Include="Properties\DataSources\DataAccess.Models.Address.datasource" />
     <None Include="Properties\DataSources\DataAccess.Models.Contact.datasource" />
